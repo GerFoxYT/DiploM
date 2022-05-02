@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="s_buttons">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/v_margin</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/ripple_effect</item>
+    </style>
+
+    <style name="s_normal_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/v_margin</item>
+        <item name="android:layout_marginStart">@dimen/h_margin</item>
+        <item name="android:textSize">@dimen/norm_size</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="s_small_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/h_margin</item>
+        <item name="android:textSize">@dimen/small_size</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="seporator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/gray</item>
+        <item name="android:layout_marginTop">@dimen/v_margin</item>
+        <item name="android:layout_marginStart">@dimen/h_margin</item>
+        <item name="android:layout_marginEnd">@dimen/h_margin</item>
+        <item name="android:layout_height">1.5dp</item>
+        <item   name="colorControlActivated">@color/colorPrimary</item>
+    </style>
+
+    <style name="seporator_bold2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/gray</item>
+        <item name="android:layout_marginTop">@dimen/v_margin</item>>
+        <item name="android:layout_height">10dp</item>
+    </style>
+
+    <style name="main_toolbar">
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="edit_reg_text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/h_margin</item>
+        <item name="android:inputType">phone</item>
+        <item name="android:padding">@dimen/Padding</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/norm_size</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColorHint">@color/gray</item>
+    </style>
+
+
+
+</resources>

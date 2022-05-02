@@ -1,16 +1,280 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.Settings">
 
-    <TextView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settings_header_block"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/black"
-        android:textSize="35dp"
-        android:gravity="center"
-        android:text="Настройки" />
+        android:layout_height="100dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/s_profile_image"
+            android:layout_width="@dimen/s_profile_image_width"
+            android:layout_height="@dimen/s_profile_image_height"
+            android:layout_marginStart="@dimen/h_margin"
+            android:src="@drawable/profile"
+            app:civ_border_color="#FF000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/s_username"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/h_margin"
+            android:layout_marginTop="@dimen/v_margin"
+            android:text="@string/s_def_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/s_profile_image"
+            app:layout_constraintTop_toTopOf="@id/s_profile_image" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/h_margin"
+            android:layout_marginTop="@dimen/v_margin"
+            android:text="@string/s_def_online"
+            android:textColor="@color/white"
+            android:textSize="@dimen/min_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/s_profile_image"
+            app:layout_constraintTop_toBottomOf="@id/s_username" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/s_text_acc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/h_margin"
+        android:layout_marginTop="@dimen/h_l_margin"
+        android:text="@string/s_text_acc"
+        android:textColor="@color/colorSecondary"
+        android:textSize="@dimen/norm_size"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/settings_header_block" /> <!--Аккаунт-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/s_btn_change_phone"
+        style="@style/s_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/s_text_acc">
+
+
+        <TextView
+            android:id="@+id/s_def_phone"
+            style="@style/s_normal_text"
+            android:layout_marginTop="4dp"
+            android:text="@string/s_def_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/s_btn_change_phone" />
+
+        <TextView
+            android:id="@+id/s_change_phone"
+            style="@style/s_small_text"
+            android:text="@string/s_change_phone_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_def_phone" />
+
+        <View
+            style="@style/seporator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_change_phone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout> <!--Номер-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/s_btn_change_name"
+        style="@style/s_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/s_btn_change_phone">
+
+        <TextView
+            android:id="@+id/s_def_name"
+            style="@style/s_normal_text"
+            android:text="@string/s_def_name_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/s_btn_change_name" />
+
+        <TextView
+            android:id="@+id/s_change_name"
+            style="@style/s_small_text"
+            android:text="@string/s_change_name_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_def_name" />
+
+        <View
+            style="@style/seporator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_change_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout> <!--Логин-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/s_btn_change_status"
+        style="@style/s_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/s_btn_change_name">
+
+        <TextView
+            android:id="@+id/s_def_status"
+            style="@style/s_normal_text"
+            android:text="@string/s_def_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/s_btn_change_status" />
+
+        <TextView
+            android:id="@+id/s_change_status"
+            style="@style/s_small_text"
+            android:text="@string/s_change_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_def_status" />
+
+        <View
+            style="@style/seporator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_change_status" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/s_text_tool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/h_margin"
+        android:layout_marginTop="@dimen/h_l_margin"
+        android:text="@string/s_def_tool"
+        android:textColor="@color/colorSecondary"
+        android:textSize="@dimen/norm_size"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/s_btn_change_status" /> <!--Найстройки-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/s_btn_notif"
+        style="@style/s_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/s_text_tool">
+
+        <TextView
+            android:id="@+id/s_def_notif"
+            style="@style/s_normal_text"
+            android:text="@string/s_text_notif"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/s_btn_notif" />
+
+        <View
+            style="@style/seporator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_def_notif" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/s_btn_conf"
+        style="@style/s_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/s_btn_notif">
+
+        <TextView
+            android:id="@+id/s_def_conf"
+            style="@style/s_normal_text"
+            android:text="@string/s_text_conf"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/s_btn_conf" />
+
+        <View
+            style="@style/seporator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_def_conf" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/s_btn_data"
+        style="@style/s_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/s_btn_conf">
+
+        <TextView
+            android:id="@+id/s_def_data"
+            style="@style/s_normal_text"
+            android:text="@string/s_text_data"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/s_btn_data" />
+
+        <View
+            style="@style/seporator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_def_data" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/s_btn_s_chats"
+        style="@style/s_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/s_btn_data">
+
+        <TextView
+            android:id="@+id/s_def_s_chats"
+            style="@style/s_normal_text"
+            android:text="@string/s_chats_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/s_btn_s_chats" />
+
+        <View
+            style="@style/seporator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_def_s_chats" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/s_btn_lang"
+        style="@style/s_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/s_btn_s_chats">
+
+        <TextView
+            android:id="@+id/s_def_s_lang"
+            style="@style/s_normal_text"
+            android:text="@string/s_lang_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/s_btn_lang" />
+        <View
+            style="@style/seporator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/s_def_s_lang" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

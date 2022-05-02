@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+                    <!--Настройки-->
+    <!-- Фото профиля -->
+    <dimen name="s_profile_image_width">70dp</dimen>
+    <dimen name="s_profile_image_height">70dp</dimen>
+    <!-- Обводка -->
+    <dimen name="s_border_profile_image_width">1.5dp</dimen>
+    <!-- Имя -->
+    <dimen name="s_name_width">0dp</dimen>
+    <dimen name="s_name_height">30dp</dimen>
+                    <!--Настройки-->
+
+    <!-- Верт. & Горз. -->
+<dimen name="v_margin">7dp</dimen>
+    <dimen name="h_margin">14dp</dimen>
+    <dimen name="h_l_margin">17dp</dimen>
+    <!-- Размеры шрифтов -->
+    <dimen name="small_size">12sp</dimen>
+    <dimen name="min_size">15sp</dimen>
+    <dimen name="norm_size">16.3sp</dimen>
+    <dimen name="large_size">18sp</dimen>
+    <!--Эффект клика-->
+    <dimen name="s_ripply_effect_radius">5dp</dimen>
+    <dimen name="Padding">10dp</dimen>
+
+</resources>

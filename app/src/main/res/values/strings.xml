@@ -2,4 +2,48 @@
     <string name="app_name">GerFox Message</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button">Button</string>
+    <string name="string_button" />
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <!--Custom-->
+    <string name="s_def_name">Владислав Лис</string>
+    <string name="s_def_online">В сети</string>
+    <string name="s_text_acc">Аккаунт</string>
+    <string name="s_def_phone">+77053009129</string>
+    <string name="s_change_phone_text">Нажмите, чтобы изменить номер телефона</string>
+    <string name="s_change_name_text">Нажмите, чтобы изменить имя пользователя</string>
+    <string name="s_def_name_text">gerfoxofficial</string>
+    <string name="s_def_status">— Максимальная разработка</string>
+    <string name="s_change_status">О себе</string>
+    <string name="s_def_tool">Настройки</string>
+    <string name="s_notif_text">Уведомления</string>
+    <string name="s_conf_text">Конфидиальность</string>
+    <string name="s_text_notif">Уведомления</string>
+    <string name="s_text_conf">Конфидициальность</string>
+    <string name="s_text_data">Данные и память</string>
+    <string name="s_chats_text">Настройка чатов</string>
+    <string name="s_lang_text">Язык</string>
+    <string name="s_menu_change_name">Изменить имя</string>
+    <string name="s_menu_exit">Выход</string>
+    <string name="cd_reg_image">cd_reg_image</string>
+    <string name="reg_text_enter_code">Введите код</string>
+    <string name="reg_sms_code">Мы отправили SMS-код проверки на ваш телефон</string>
+    <string name="reg_hint_def_code">- - - - - - </string>
+    <string name="title_ur_phone">Ваш телефон</string>
+    <string name="register_toast_enter_phone">Введите номер телефона</string>
+    <string name="reg_phone_hint">Введите номер телефона</string>
 </resources>
