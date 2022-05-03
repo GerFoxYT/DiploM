@@ -61,7 +61,10 @@
         <item name="android:maxLines">1</item>
         <item name="android:textColorHint">@color/gray</item>
     </style>
+<style name="actionMenu" parent="Theme.AppCompat.Light">
+    <item name="background">@color/white</item>
+    <item name="android:textColor">@color/black</item>
 
-
+</style>
 
 </resources>

@@ -4,10 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/drawable/header.xml" value="0.2105" />
+        <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/drawable/ic_btn_action_menu.xml" value="0.2265" />
+        <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/drawable/ic_btn_edit.xml" value="0.1355" />
+        <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/drawable/ic_btn_exit.xml" value="0.1355" />
+        <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/drawable/ic_change.xml" value="0.2155" />
+        <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/drawable/ic_edit.xml" value="0.1355" />
+        <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/drawable/ic_exit.xml" value="0.2155" />
+        <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1355" />
         <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/layout/activity_main.xml" value="0.2791666666666667" />
         <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/layout/fragment_base.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/layout/fragment_chats.xml" value="0.29322916666666665" />
         <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/layout/fragment_settings.xml" value="0.29322916666666665" />
+        <entry key="..\:/Users/GerFox/AndroidStudioProjects/Diplom/app/src/main/res/menu/settings_action_menu.xml" value="0.29322916666666665" />
       </map>
     </option>
   </component>
