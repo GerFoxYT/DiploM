@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-open class Base(val layout: Int) : Fragment() {
+open class Base(val layout: Int) : Fragment(layout) {
     private lateinit var mRootView: View
 
     override fun onCreateView(

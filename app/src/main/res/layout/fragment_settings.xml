@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/settings_header_block"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/s_username"
+            android:id="@+id/s_full_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/h_margin"
@@ -50,7 +50,7 @@
             android:textSize="@dimen/min_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/s_profile_image"
-            app:layout_constraintTop_toBottomOf="@id/s_username" />
+            app:layout_constraintTop_toBottomOf="@id/s_full_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

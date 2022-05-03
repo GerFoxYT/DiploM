@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.gerfoxmessage.R
 import com.example.gerfoxmessage.ui.fragments.Settings
+import com.example.gerfoxmessage.utilits.replaceFragment
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
@@ -79,10 +80,8 @@ class AppDrawer(val mainActivity:AppCompatActivity, val toolbar: Toolbar) {
                     position: Int,
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
-                    when(position){
-                        5 ->  mainActivity.supportFragmentManager.beginTransaction()
-                            .addToBackStack(null)
-                            .replace(R.id.dataContainer, Settings()).commit()
+                    when(position) {
+                        5 -> mainActivity.replaceFragment(Settings())
                     }
                     return false
                 }

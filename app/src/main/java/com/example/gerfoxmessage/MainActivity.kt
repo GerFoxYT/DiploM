@@ -3,9 +3,14 @@ package com.example.gerfoxmessage
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.example.gerfoxmessage.activites.RegisterActivity
 import com.example.gerfoxmessage.databinding.ActivityMainBinding
 import com.example.gerfoxmessage.ui.fragments.Chats
 import com.example.gerfoxmessage.ui.objects.AppDrawer
+import com.example.gerfoxmessage.utilits.AUTH
+import com.example.gerfoxmessage.utilits.initFirebase
+import com.example.gerfoxmessage.utilits.replaceActivity
+import com.example.gerfoxmessage.utilits.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,15 +30,22 @@ class MainActivity : AppCompatActivity() {
         initFunc()
     }
 
-    private fun initFunc() {
-        setSupportActionBar(mToolbar)
-        mAppDrawer.create()
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.dataContainer, Chats()).commit()
+    private fun initFields() {
+        mToolbar = mBinding.mToolBar
+        mAppDrawer = AppDrawer(this, mToolbar)
+        initFirebase()
+
     }
 
-    private fun initFields() {
-        mToolbar = mBinding.mainToolBar
-        mAppDrawer = AppDrawer(this, mToolbar)
+    private fun initFunc() {
+        if (AUTH.currentUser!=null) {
+            setSupportActionBar(mToolbar)
+            mAppDrawer.create()
+            replaceFragment(Chats(),false)
+        } else {
+            replaceActivity(RegisterActivity())
+        }
     }
 }
+
+

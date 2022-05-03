@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/mToolBar"
+        android:id="@+id/registerToolBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
@@ -23,6 +23,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mToolBar"/>
+        app:layout_constraintTop_toBottomOf="@+id/registerToolBar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
