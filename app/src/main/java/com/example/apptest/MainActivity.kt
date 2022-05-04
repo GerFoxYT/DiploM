@@ -5,18 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.apptest.activites.RegisterActivity
 import com.example.apptest.databinding.ActivityMainBinding
+import com.example.apptest.models.User
 import com.example.apptest.ui.fragments.Chats
 import com.example.apptest.ui.objects.AppDrawer
-import com.example.apptest.utilits.AUTH
-import com.example.apptest.utilits.initFirebase
-import com.example.apptest.utilits.replaceActivity
-import com.example.apptest.utilits.replaceFragment
+import com.example.apptest.ui.objects.AppValueEventListener
+import com.example.apptest.utilits.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
     private lateinit var mToolbar: Toolbar
-     lateinit var mAppDrawer: AppDrawer
+    lateinit var mAppDrawer: AppDrawer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,12 +30,11 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     private fun initFunc() {
-        if (AUTH.currentUser!=null) {
+        if (AUTH.currentUser != null) {
             setSupportActionBar(mToolbar)
             mAppDrawer.create()
-            replaceFragment(Chats(),false)
+            replaceFragment(Chats(), false)
         } else {
             replaceActivity(RegisterActivity())
         }
@@ -47,8 +45,16 @@ class MainActivity : AppCompatActivity() {
         mToolbar = mBinding.mToolBar
         mAppDrawer = AppDrawer(this, mToolbar)
         initFirebase()
-
+        initUser()
     }
+
+    private fun initUser() {
+        REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
+            .addListenerForSingleValueEvent(AppValueEventListener {
+USER = it.getValue(User::class.java) ?:User()
+            })
+    }
+
 
 }
 

@@ -20,14 +20,14 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
     <!--Custom-->
-    <string name="s_def_name">Vlad Zaveryukhin</string>
-    <string name="s_def_online">В сети</string>
+    <string name="s_fullname">Vlad Zaveryukhin</string>
+    <string name="s_status">В сети</string>
     <string name="s_text_acc">Аккаунт</string>
-    <string name="s_def_phone">+77053009129</string>
+    <string name="s_phoneNum">+77053009129</string>
     <string name="s_change_phone_text">Нажмите, чтобы изменить номер телефона</string>
     <string name="s_change_name_text">Нажмите, чтобы изменить имя пользователя</string>
-    <string name="s_def_name_text">gerfoxofficial</string>
-    <string name="s_def_status">— Максимальная разработка</string>
+    <string name="s_username">gerfoxofficial</string>
+    <string name="s_bio">— Максимальная разработка</string>
     <string name="s_change_status">О себе</string>
     <string name="s_def_tool">Настройки</string>
     <string name="s_notif_text">Уведомления</string>
