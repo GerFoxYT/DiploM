@@ -8,7 +8,6 @@ import com.example.apptest.databinding.FragmentRegisterActivityBinding
 import com.example.apptest.ui.fragments.EnterPhoneNum
 import com.example.apptest.utilits.initFirebase
 import com.example.apptest.utilits.replaceFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 class RegisterActivity : AppCompatActivity() {
 

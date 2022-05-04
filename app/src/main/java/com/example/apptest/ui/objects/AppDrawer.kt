@@ -21,7 +21,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
 
     private lateinit var mDrawer: Drawer
     private lateinit var mHeader: AccountHeader
-    private  lateinit var mDrawerLayout: DrawerLayout
+    private lateinit var mDrawerLayout: DrawerLayout
 
     fun create() {
         createHeader()

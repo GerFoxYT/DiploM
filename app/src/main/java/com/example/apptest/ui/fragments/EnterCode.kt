@@ -2,7 +2,6 @@ package com.example.apptest.ui.fragments
 
 import androidx.fragment.app.Fragment
 import com.example.apptest.MainActivity
-import com.example.apptest.utilits.*
 import com.example.apptest.R
 import com.example.apptest.activites.RegisterActivity
 import com.example.apptest.utilits.*
@@ -36,7 +35,7 @@ class EnterCode(val phoneNumber: String, val id: String) :
                 dateMap[CHILD_PHONE] = phoneNumber
                 dateMap[CHILD_USERNAME] = uid
                 REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
-                    .addOnCompleteListener {task2 ->
+                    .addOnCompleteListener { task2 ->
                         if (task2.isSuccessful) {
                             showToast("Добро пожаловать")
                             (activity as RegisterActivity).replaceActivity(MainActivity())

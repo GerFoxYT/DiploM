@@ -27,6 +27,7 @@ class Settings : Base(R.layout.fragment_settings) {
         s_status.text = USER.status
         s_input_username.text = USER.username
         s_btn_change_name.setOnClickListener { replaceFragment(ChangeUsername()) }
+        s_btn_change_status.setOnClickListener { replaceFragment(ChangeBio()) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     private fun initUser() {
         REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
             .addListenerForSingleValueEvent(AppValueEventListener {
-USER = it.getValue(User::class.java) ?:User()
+                USER = it.getValue(User::class.java) ?: User()
             })
     }
 

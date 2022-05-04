@@ -11,30 +11,17 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 import java.util.*
 
 
-class ChangeUsername : Base(R.layout.fragment_change_username) {
+class ChangeUsername : BaseChange(R.layout.fragment_change_username) {
 
     lateinit var mNewUsername: String
 
     override fun onResume() {
         super.onResume()
-        setHasOptionsMenu(true)
         s_input_username.text = USER.username
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        (activity as MainActivity).menuInflater.inflate(R.menu.s_confirm_menu, menu)
-    }
 
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.s_confirm_change -> change()
-        }
-        return true
-
-    }
-
-    fun change() {
+   override fun change() {
         mNewUsername = s_input_username.text.toString().lowercase(Locale.getDefault())
         if (mNewUsername.isEmpty()) {
             showToast("Кажется ты кое-что забыл")
