@@ -25,7 +25,8 @@ class Settings : Base(R.layout.fragment_settings) {
         s_full_name.text = USER.fullname
         s_phoneNum.text = USER.phone
         s_status.text = USER.status
-        s_username.text = USER.username
+        s_input_username.text = USER.username
+        s_btn_change_name.setOnClickListener { replaceFragment(ChangeUsername()) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
