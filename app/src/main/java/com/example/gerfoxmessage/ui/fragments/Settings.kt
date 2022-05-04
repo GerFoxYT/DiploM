@@ -3,6 +3,7 @@ package com.example.gerfoxmessage.ui.fragments
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import com.example.gerfoxmessage.MainActivity
 import com.example.gerfoxmessage.R
 import com.example.gerfoxmessage.activites.RegisterActivity
 import com.example.gerfoxmessage.utilits.AUTH
@@ -23,7 +24,7 @@ class Settings : Base(R.layout.fragment_settings) {
         when (item.itemId) {
             R.id.s_btn_exit -> {
                 AUTH.signOut()
-                (activity as RegisterActivity).replaceActivity(RegisterActivity())
+                (activity as MainActivity).replaceActivity(RegisterActivity())
             }
         }
         return true

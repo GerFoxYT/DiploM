@@ -47,7 +47,7 @@
 
 
     <EditText
-        android:id="@+id/register_input_code"
+        android:id="@+id/register_input_text_code"
         style="@style/edit_reg_text"
         android:autofillHints=""
         android:gravity="center"

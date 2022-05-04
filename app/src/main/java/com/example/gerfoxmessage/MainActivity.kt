@@ -30,12 +30,7 @@ class MainActivity : AppCompatActivity() {
         initFunc()
     }
 
-    private fun initFields() {
-        mToolbar = mBinding.mToolBar
-        mAppDrawer = AppDrawer(this, mToolbar)
-        initFirebase()
 
-    }
 
     private fun initFunc() {
         if (AUTH.currentUser!=null) {
@@ -45,7 +40,16 @@ class MainActivity : AppCompatActivity() {
         } else {
             replaceActivity(RegisterActivity())
         }
+
     }
+
+    private fun initFields() {
+        mToolbar = mBinding.mToolBar
+        mAppDrawer = AppDrawer(this, mToolbar)
+        initFirebase()
+
+    }
+
 }
 
 

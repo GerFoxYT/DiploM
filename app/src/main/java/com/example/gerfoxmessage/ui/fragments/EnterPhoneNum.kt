@@ -44,6 +44,7 @@ class EnterPhoneNum : Fragment(R.layout.fragment_enter_phone_num) {
                 replaceFragment(EnterCode(mPhoneNumber, id))
             }
         }
+        register_btn_next.setOnClickListener { sendCode() }
     }
 
     private fun sendCode() {
