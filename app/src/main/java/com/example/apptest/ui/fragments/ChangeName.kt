@@ -8,7 +8,7 @@ import com.example.apptest.R
 import com.example.apptest.utilits.*
 import kotlinx.android.synthetic.main.fragment_change_name.*
 
-class ChangeName : Fragment(R.layout.fragment_change_name) {
+class ChangeName : Base(R.layout.fragment_change_name) {
 
 
     override fun onResume() {
@@ -16,8 +16,10 @@ class ChangeName : Fragment(R.layout.fragment_change_name) {
         setHasOptionsMenu(true)
 setHasOptionsMenu(true)
         val fullnameList = USER.fullname.split(" ")
-        s_input_name.setText(fullnameList[0])
-        s_input_surname.setText(fullnameList[1])
+        if (fullnameList.size>1) {
+            s_input_name.setText(fullnameList[0])
+            s_input_surname.setText(fullnameList[1])
+        }else s_input_name.setText(fullnameList[0])
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
