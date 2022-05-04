@@ -1,4 +1,4 @@
-package com.example.gerfoxmessage.ui.fragments
+package com.example.apptest.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

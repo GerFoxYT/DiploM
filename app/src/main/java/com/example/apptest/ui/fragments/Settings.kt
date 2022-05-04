@@ -1,13 +1,13 @@
-package com.example.gerfoxmessage.ui.fragments
+package com.example.apptest.ui.fragments
 
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import com.example.gerfoxmessage.MainActivity
-import com.example.gerfoxmessage.R
-import com.example.gerfoxmessage.activites.RegisterActivity
-import com.example.gerfoxmessage.utilits.AUTH
-import com.example.gerfoxmessage.utilits.replaceActivity
+import com.example.apptest.MainActivity
+import com.example.apptest.R
+import com.example.apptest.activites.RegisterActivity
+import com.example.apptest.utilits.AUTH
+import com.example.apptest.utilits.replaceActivity
 
 class Settings : Base(R.layout.fragment_settings) {
 

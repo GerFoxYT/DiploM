@@ -1,11 +1,11 @@
-package com.example.gerfoxmessage.ui.objects
+package com.example.apptest.ui.objects
 
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.gerfoxmessage.R
-import com.example.gerfoxmessage.ui.fragments.Settings
-import com.example.gerfoxmessage.utilits.replaceFragment
+import com.example.apptest.R
+import com.example.apptest.ui.fragments.Settings
+import com.example.apptest.utilits.replaceFragment
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer

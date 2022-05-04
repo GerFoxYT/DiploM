@@ -1,10 +1,10 @@
-package com.example.gerfoxmessage.utilits
+package com.example.apptest.utilits
 
 import android.content.Intent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.gerfoxmessage.R
+import com.example.apptest.R
 
 fun Fragment.showToast(message: String) {
     Toast.makeText(this.context, message, Toast.LENGTH_SHORT).show()

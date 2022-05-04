@@ -1,13 +1,13 @@
-package com.example.gerfoxmessage.activites
+package com.example.apptest.activites
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.gerfoxmessage.R
-import com.example.gerfoxmessage.databinding.FragmentRegisterActivityBinding
-import com.example.gerfoxmessage.ui.fragments.EnterPhoneNum
-import com.example.gerfoxmessage.utilits.initFirebase
-import com.example.gerfoxmessage.utilits.replaceFragment
+import com.example.apptest.R
+import com.example.apptest.databinding.FragmentRegisterActivityBinding
+import com.example.apptest.ui.fragments.EnterPhoneNum
+import com.example.apptest.utilits.initFirebase
+import com.example.apptest.utilits.replaceFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class RegisterActivity : AppCompatActivity() {

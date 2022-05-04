@@ -1,4 +1,4 @@
-package com.example.gerfoxmessage
+package com.example.apptest
 
 import org.junit.Test
 

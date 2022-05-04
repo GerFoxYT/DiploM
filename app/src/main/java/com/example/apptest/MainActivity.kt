@@ -1,16 +1,16 @@
-package com.example.gerfoxmessage
+package com.example.apptest
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.gerfoxmessage.activites.RegisterActivity
-import com.example.gerfoxmessage.databinding.ActivityMainBinding
-import com.example.gerfoxmessage.ui.fragments.Chats
-import com.example.gerfoxmessage.ui.objects.AppDrawer
-import com.example.gerfoxmessage.utilits.AUTH
-import com.example.gerfoxmessage.utilits.initFirebase
-import com.example.gerfoxmessage.utilits.replaceActivity
-import com.example.gerfoxmessage.utilits.replaceFragment
+import com.example.apptest.activites.RegisterActivity
+import com.example.apptest.databinding.ActivityMainBinding
+import com.example.apptest.ui.fragments.Chats
+import com.example.apptest.ui.objects.AppDrawer
+import com.example.apptest.utilits.AUTH
+import com.example.apptest.utilits.initFirebase
+import com.example.apptest.utilits.replaceActivity
+import com.example.apptest.utilits.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 

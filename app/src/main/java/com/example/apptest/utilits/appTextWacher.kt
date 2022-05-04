@@ -1,4 +1,4 @@
-package com.example.gerfoxmessage.utilits
+package com.example.apptest.utilits
 
 import android.text.Editable
 import android.text.TextWatcher

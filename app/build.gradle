@@ -10,7 +10,7 @@ android {
     compileSdk 32
 viewBinding.enabled = true
     defaultConfig {
-        applicationId "com.example.gerfoxmessage"
+        applicationId "com.example.apptest"
         minSdk 21
         targetSdk 32
         versionCode 1
