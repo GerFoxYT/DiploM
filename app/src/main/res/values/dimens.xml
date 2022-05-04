@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-                    <!--Настройки-->
+    <!--Настройки-->
     <!-- Фото профиля -->
     <dimen name="s_profile_image_width">70dp</dimen>
     <dimen name="s_profile_image_height">70dp</dimen>
@@ -9,10 +9,10 @@
     <!-- Имя -->
     <dimen name="s_name_width">0dp</dimen>
     <dimen name="s_name_height">30dp</dimen>
-                    <!--Настройки-->
+    <!--Настройки-->
 
     <!-- Верт. & Горз. -->
-<dimen name="v_margin">7dp</dimen>
+    <dimen name="v_margin">7dp</dimen>
     <dimen name="h_margin">14dp</dimen>
     <dimen name="h_l_margin">17dp</dimen>
     <!-- Размеры шрифтов -->
@@ -23,5 +23,6 @@
     <!--Эффект клика-->
     <dimen name="s_ripply_effect_radius">5dp</dimen>
     <dimen name="Padding">10dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 
 </resources>

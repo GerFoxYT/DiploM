@@ -8,6 +8,7 @@ import com.example.apptest.R
 import com.example.apptest.activites.RegisterActivity
 import com.example.apptest.utilits.AUTH
 import com.example.apptest.utilits.replaceActivity
+import com.example.apptest.utilits.replaceFragment
 
 class Settings : Base(R.layout.fragment_settings) {
 
@@ -26,6 +27,7 @@ class Settings : Base(R.layout.fragment_settings) {
                 AUTH.signOut()
                 (activity as MainActivity).replaceActivity(RegisterActivity())
             }
+            R.id.s_menu_change_name -> replaceFragment(ChangeName())
         }
         return true
     }
