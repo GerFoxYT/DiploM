@@ -75,6 +75,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+    fun hideKeyboard(){
+        val imm:InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE)
+                as InputMethodManager
+        imm.hideSoftInputFromWindow(window.decorView.windowToken,0)
+    }
 
 }
 

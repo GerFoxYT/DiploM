@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.example.apptest.MainActivity
 import com.example.apptest.R
+import com.example.apptest.utilits.APP_ACTIVITY
 
 open class BaseChange(layout: Int) : Fragment(layout) {
 
@@ -19,6 +20,7 @@ open class BaseChange(layout: Int) : Fragment(layout) {
 
     override fun onStop() {
         super.onStop()
+        APP_ACTIVITY.hideKeyboard()
 
 
     }
