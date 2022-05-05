@@ -4,6 +4,9 @@
     <!-- Фото профиля -->
     <dimen name="s_profile_image_width">70dp</dimen>
     <dimen name="s_profile_image_height">70dp</dimen>
+
+    <dimen name="settings_user_photo_width">65dp</dimen>
+    <dimen name="settings_user_photo_height">65dp</dimen>
     <!-- Обводка -->
     <dimen name="s_border_profile_image_width">1.5dp</dimen>
     <!-- Имя -->

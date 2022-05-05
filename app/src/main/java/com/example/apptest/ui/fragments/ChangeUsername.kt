@@ -1,9 +1,5 @@
 package com.example.apptest.ui.fragments
 
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import com.example.apptest.MainActivity
 import com.example.apptest.R
 import com.example.apptest.ui.objects.AppValueEventListener
 import com.example.apptest.utilits.*
@@ -39,7 +35,7 @@ class ChangeUsername : BaseChange(R.layout.fragment_change_username) {
     }
 
     private fun changeUsername() {
-        REF_DATABASE_ROOT.child(NODE_USERNAMES).child(mNewUsername).setValue(UID)
+        REF_DATABASE_ROOT.child(NODE_USERNAMES).child(mNewUsername).setValue(CURRENT_UID)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     updateCurrnetUsername()
@@ -48,7 +44,7 @@ class ChangeUsername : BaseChange(R.layout.fragment_change_username) {
     }
 
     private fun updateCurrnetUsername() {
-        REF_DATABASE_ROOT.child(NODE_USERS).child(UID).child(CHILD_USERNAME)
+        REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_USERNAME)
             .setValue(mNewUsername)
             .addOnCompleteListener {
                 if (it.isSuccessful) {

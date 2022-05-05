@@ -33,12 +33,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/h_margin"
             android:layout_marginTop="@dimen/v_margin"
-            tools:text="@string/s_fullname"
             android:textColor="@color/white"
             android:textSize="@dimen/large_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/s_profile_image"
-            app:layout_constraintTop_toTopOf="@id/s_profile_image" />
+            app:layout_constraintTop_toTopOf="@id/s_profile_image"
+            tools:text="@string/s_fullname" />
 
         <TextView
             android:id="@+id/s_status"
@@ -46,12 +46,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/h_margin"
             android:layout_marginTop="@dimen/v_margin"
-            tools:text="@string/s_status"
             android:textColor="@color/white"
             android:textSize="@dimen/min_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/s_profile_image"
-            app:layout_constraintTop_toBottomOf="@id/s_full_name" />
+            app:layout_constraintTop_toBottomOf="@id/s_full_name"
+            tools:text="@string/s_status" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -79,9 +80,9 @@
             android:id="@+id/s_phoneNum"
             style="@style/s_normal_text"
             android:layout_marginTop="4dp"
-            tools:text="@string/s_phoneNum"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/s_btn_change_phone" />
+            app:layout_constraintTop_toTopOf="@+id/s_btn_change_phone"
+            tools:text="@string/s_phoneNum" />
 
         <TextView
             android:id="@+id/s_change_phone"
@@ -108,9 +109,9 @@
         <TextView
             android:id="@+id/s_input_username"
             style="@style/s_normal_text"
-            tools:text="@string/s_username"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/s_btn_change_name" />
+            app:layout_constraintTop_toTopOf="@+id/s_btn_change_name"
+            tools:text="@string/s_username" />
 
         <TextView
             android:id="@+id/s_change_name"
@@ -136,9 +137,9 @@
         <TextView
             android:id="@+id/s_bio"
             style="@style/s_normal_text"
-            tools:text="@string/s_bio"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/s_btn_change_status" />
+            app:layout_constraintTop_toTopOf="@+id/s_btn_change_status"
+            tools:text="@string/s_bio" />
 
         <TextView
             android:id="@+id/s_change_status"
@@ -155,127 +156,15 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/s_text_tool"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/h_margin"
-        android:layout_marginTop="@dimen/h_l_margin"
-        android:text="@string/s_def_tool"
-        android:textColor="@color/colorSecondary"
-        android:textSize="@dimen/norm_size"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/s_btn_change_status" /> <!--Найстройки-->
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/s_btn_notif"
-        style="@style/s_buttons"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/settings_change_photo"
+        android:layout_width="@dimen/settings_user_photo_width"
+        android:layout_height="@dimen/settings_user_photo_height"
+        android:src="@drawable/ic_camera"
+        android:layout_marginEnd="@dimen/h_margin"
+        app:civ_border_color="@color/gray"
+        app:civ_circle_background_color="@color/colorSecondary"
+        app:layout_constraintBottom_toBottomOf="@+id/settings_header_block"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/s_text_tool">
-
-        <TextView
-            android:id="@+id/s_def_notif"
-            style="@style/s_normal_text"
-            android:text="@string/s_text_notif"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/s_btn_notif" />
-
-        <View
-            style="@style/seporator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/s_def_notif" />
-
+        app:layout_constraintTop_toBottomOf="@+id/settings_header_block" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/s_btn_conf"
-        style="@style/s_buttons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/s_btn_notif">
-
-        <TextView
-            android:id="@+id/s_def_conf"
-            style="@style/s_normal_text"
-            android:text="@string/s_text_conf"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/s_btn_conf" />
-
-        <View
-            style="@style/seporator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/s_def_conf" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/s_btn_data"
-        style="@style/s_buttons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/s_btn_conf">
-
-        <TextView
-            android:id="@+id/s_def_data"
-            style="@style/s_normal_text"
-            android:text="@string/s_text_data"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/s_btn_data" />
-
-        <View
-            style="@style/seporator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/s_def_data" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/s_btn_s_chats"
-        style="@style/s_buttons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/s_btn_data">
-
-        <TextView
-            android:id="@+id/s_def_s_chats"
-            style="@style/s_normal_text"
-            android:text="@string/s_chats_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/s_btn_s_chats" />
-
-        <View
-            style="@style/seporator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/s_def_s_chats" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/s_btn_lang"
-        style="@style/s_buttons"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/s_btn_s_chats">
-
-        <TextView
-            android:id="@+id/s_def_s_lang"
-            style="@style/s_normal_text"
-            android:text="@string/s_lang_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/s_btn_lang" />
-        <View
-            style="@style/seporator"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/s_def_s_lang" />
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

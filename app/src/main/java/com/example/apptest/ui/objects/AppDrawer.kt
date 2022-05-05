@@ -56,8 +56,8 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
             .withActivity(mainActivity)
             .withHeaderBackground(R.drawable.header)
             .addProfiles(
-                ProfileDrawerItem().withName("Vlad Zaveryukhin")
-                    .withEmail("+77053009129")
+                ProfileDrawerItem().withName("Name Surname")
+                    .withEmail("PhoneNumber")
             ).build()
     }
 
@@ -71,22 +71,22 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
             .addDrawerItems(
                 PrimaryDrawerItem().withIdentifier(100)
                     .withIconTintingEnabled(true)
-                    .withName("Создать группу")
+                    .withName("Создать группу[В разработке]")
                     .withSelectable(false)
                     .withIcon(R.drawable.add_user),
                 PrimaryDrawerItem().withIdentifier(101)
                     .withIconTintingEnabled(true)
-                    .withName("Контакты")
+                    .withName("Контакты[В разработке]")
                     .withSelectable(false)
                     .withIcon(R.drawable.contact_book),
                 PrimaryDrawerItem().withIdentifier(102)
                     .withIconTintingEnabled(true)
-                    .withName("Звонки")
+                    .withName("Звонки[В разработке]")
                     .withSelectable(false)
                     .withIcon(R.drawable.phone_call),
                 PrimaryDrawerItem().withIdentifier(103)
                     .withIconTintingEnabled(true)
-                    .withName("Избранное")
+                    .withName("Избранное[В разработке]")
                     .withSelectable(false)
                     .withIcon(R.drawable.favorite),
                 PrimaryDrawerItem().withIdentifier(104)
@@ -97,7 +97,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
                 DividerDrawerItem(),
                 PrimaryDrawerItem().withIdentifier(105)
                     .withIconTintingEnabled(true)
-                    .withName("Информация")
+                    .withName("Информация[В разработке]")
                     .withSelectable(false)
                     .withIcon(R.drawable.info),
             ).withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
