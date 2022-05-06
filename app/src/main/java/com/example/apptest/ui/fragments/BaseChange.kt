@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.apptest.MainActivity
 import com.example.apptest.R
 import com.example.apptest.utilits.APP_ACTIVITY
+import com.example.apptest.utilits.hideKeyboard
 
 open class BaseChange(layout: Int) : Fragment(layout) {
 
@@ -14,14 +15,13 @@ open class BaseChange(layout: Int) : Fragment(layout) {
         super.onStart()
         setHasOptionsMenu(true)
         (activity as MainActivity).mAppDrawer.disableDrawer()
+        hideKeyboard()
 
 
     }
 
     override fun onStop() {
         super.onStop()
-        APP_ACTIVITY.hideKeyboard()
-
 
     }
 
