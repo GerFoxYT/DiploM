@@ -63,26 +63,38 @@ class Settings : Base(R.layout.fragment_settings) {
             val uri = CropImage.getActivityResult(data).uri
             val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE)
                 .child(CURRENT_UID)
-            path.putFile(uri).addOnCompleteListener { task1 ->
-                if (task1.isSuccessful) {
-                    path.downloadUrl.addOnCompleteListener { task2 ->
-                        if (task2.isSuccessful) {
-                            val photoUrl = task2.result.toString()
-                            REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
-                                .child(CHILD_PHOTO_URL).setValue(photoUrl)
-                                .addOnCompleteListener {
-                                    if (it.isSuccessful) {
-                                        s_profile_image.downloadAndSetImage(photoUrl)
-                                        showToast("Данные обновленны")
-                                        USER.photoUrl = photoUrl
-                                    }
-                                }
-                        }
-                    }
-                }
+
+            putImageToStorage(uri, path) {
+\\
+            }
+
+            private fun putImageToStorage(uri: Uri, path: StorageReference, function: () -> Unit) {
+                path.putFile(uri)
+                    .addOnSuccessListener { function}
+                    .addOnFailureListener { showToast()}
             }
         }
-
     }
-
 }
+
+
+/* path.putFile(uri).addOnCompleteListener { task1 ->
+if (task1.isSuccessful) {
+    path.downloadUrl.addOnCompleteListener { task2 ->
+        if (task2.isSuccessful) {
+            val photoUrl = task2.result.toString()
+            REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
+                .child(CHILD_PHOTO_URL).setValue(photoUrl)
+                .addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        s_profile_image.downloadAndSetImage(photoUrl)
+                        showToast("Данные обновленны")
+                        USER.photoUrl = photoUrl
+                    }
+                }
+        }
+    }
+}
+}
+}
+ */
