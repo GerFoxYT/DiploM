@@ -7,5 +7,5 @@ data class User(
     var fullname: String = "",
     var bio: String = "",
     var status: String = "",
-    var photoUrl: String = ""
+    var photoUrl: String = "empty"
 )

@@ -29,6 +29,7 @@ class Settings : Base(R.layout.fragment_settings) {
         s_btn_change_name.setOnClickListener { replaceFragment(ChangeUsername()) }
         s_btn_change_status.setOnClickListener { replaceFragment(ChangeBio()) }
         settings_change_photo.setOnClickListener { changePhotoUser() }
+        s_profile_image.downloadAndSetImage(USER.photoUrl)
     }
 
     private fun changePhotoUser() {
@@ -63,38 +64,15 @@ class Settings : Base(R.layout.fragment_settings) {
             val uri = CropImage.getActivityResult(data).uri
             val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE)
                 .child(CURRENT_UID)
-
-            putImageToStorage(uri, path) {
-\\
-            }
-
-            private fun putImageToStorage(uri: Uri, path: StorageReference, function: () -> Unit) {
-                path.putFile(uri)
-                    .addOnSuccessListener { function}
-                    .addOnFailureListener { showToast()}
-            }
-        }
-    }
-}
-
-
-/* path.putFile(uri).addOnCompleteListener { task1 ->
-if (task1.isSuccessful) {
-    path.downloadUrl.addOnCompleteListener { task2 ->
-        if (task2.isSuccessful) {
-            val photoUrl = task2.result.toString()
-            REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
-                .child(CHILD_PHOTO_URL).setValue(photoUrl)
-                .addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        s_profile_image.downloadAndSetImage(photoUrl)
+            putImageToStorage(uri,path){
+                getUrlFromStorage(path){
+                    putUrlToDatabase(it){
+                        s_profile_image.downloadAndSetImage(it)
                         showToast("Данные обновленны")
-                        USER.photoUrl = photoUrl
+                        USER.photoUrl = it
                     }
                 }
+            }
         }
     }
 }
-}
-}
- */
