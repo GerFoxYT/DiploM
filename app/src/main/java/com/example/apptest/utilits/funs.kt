@@ -12,32 +12,38 @@ import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.fragment_settings.*
 
-fun showToast(message: String) {
-    Toast.makeText(APP_ACTIVITY, message, Toast.LENGTH_SHORT).show()
+fun showToast(message:String){
+    Toast.makeText(APP_ACTIVITY,message,Toast.LENGTH_SHORT).show()
 }
 
-fun AppCompatActivity.replaceActivity(activity: AppCompatActivity) {
+fun AppCompatActivity.replaceActivity(activity: AppCompatActivity){
     val intent = Intent(this, activity::class.java)
     startActivity(intent)
     this.finish()
 }
 
-fun AppCompatActivity.replaceFragment(fragment: Fragment, addStack: Boolean = true) {
-    if (addStack) {
+fun AppCompatActivity.replaceFragment(fragment: Fragment, addStack:Boolean = true){
+    if (addStack){
         supportFragmentManager.beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.dataContainer, fragment).commit()
+            .replace(R.id.dataContainer,
+                fragment
+            ).commit()
     } else {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.dataContainer, fragment).commit()
+            .replace(R.id.dataContainer,
+                fragment
+            ).commit()
     }
+
 }
 
-
-fun Fragment.replaceFragment(fragment: Fragment) {
+fun Fragment.replaceFragment(fragment: Fragment){
     this.fragmentManager?.beginTransaction()
         ?.addToBackStack(null)
-        ?.replace(R.id.dataContainer, fragment)?.commit()
+        ?.replace(R.id.dataContainer,
+            fragment
+        )?.commit()
 }
 
 fun hideKeyboard() {

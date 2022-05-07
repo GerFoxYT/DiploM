@@ -24,13 +24,13 @@ class ChangeName : BaseChange(R.layout.fragment_change_name) {
         val name = s_input_name.text.toString()
         val surname = s_input_surname.text.toString()
         if (name.isEmpty()){
-            showToast("Имя не должно быть пустым")
+            showToast("Имя не может быть пустным")
         } else {
             val fullname = "$name $surname"
             REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_FULLNAME)
                 .setValue(fullname).addOnCompleteListener {
                     if (it.isSuccessful){
-                        showToast("Данные обновленны")
+                        showToast("Данные UP")
                         USER.fullname = fullname
                         APP_ACTIVITY.mAppDrawer.updateHeader()
                         fragmentManager?.popBackStack()

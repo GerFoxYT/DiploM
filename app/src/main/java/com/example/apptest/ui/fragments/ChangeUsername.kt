@@ -13,20 +13,19 @@ class ChangeUsername : BaseChange(R.layout.fragment_change_username) {
 
     override fun onResume() {
         super.onResume()
-        s_input_username.text = USER.username
+        s_input_username.setText(USER.username)
     }
 
-
-   override fun change() {
-        mNewUsername = s_input_username.text.toString().lowercase(Locale.getDefault())
-        if (mNewUsername.isEmpty()) {
-            showToast("Кажется ты кое-что забыл")
+    override fun change() {
+        mNewUsername = s_input_username.text.toString().toLowerCase(Locale.getDefault())
+        if (mNewUsername.isEmpty()){
+            showToast("Поле пустое")
         } else {
             REF_DATABASE_ROOT.child(NODE_USERNAMES)
-                .addListenerForSingleValueEvent(AppValueEventListener {
-                    if (it.hasChild(mNewUsername)) {
-                        showToast("Такое имя пользователя уже занято")
-                    } else {
+                .addListenerForSingleValueEvent(AppValueEventListener{
+                    if (it.hasChild(mNewUsername)){
+                        showToast("Такой пользователь уже существует")
+                    } else{
                         changeUsername()
                     }
                 })
@@ -35,20 +34,21 @@ class ChangeUsername : BaseChange(R.layout.fragment_change_username) {
     }
 
     private fun changeUsername() {
+
         REF_DATABASE_ROOT.child(NODE_USERNAMES).child(mNewUsername).setValue(CURRENT_UID)
             .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    updateCurrnetUsername()
+                if (it.isSuccessful){
+                    updateCurrentUsername()
                 }
             }
     }
 
-    private fun updateCurrnetUsername() {
+    private fun updateCurrentUsername() {
         REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_USERNAME)
             .setValue(mNewUsername)
             .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    showToast("Данные обновленны")
+                if (it.isSuccessful){
+                    showToast("Данные UP")
                     deleteOldUsername()
                 } else {
                     showToast(it.exception?.message.toString())
@@ -59,8 +59,8 @@ class ChangeUsername : BaseChange(R.layout.fragment_change_username) {
     private fun deleteOldUsername() {
         REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
             .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    showToast("Данные обновленны")
+                if (it.isSuccessful){
+                    showToast("Данные UP")
                     fragmentManager?.popBackStack()
                     USER.username = mNewUsername
                 } else {
@@ -68,5 +68,5 @@ class ChangeUsername : BaseChange(R.layout.fragment_change_username) {
                 }
             }
     }
-}
+    }
 

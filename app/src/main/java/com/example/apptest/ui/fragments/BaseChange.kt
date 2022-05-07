@@ -16,26 +16,21 @@ open class BaseChange(layout: Int) : Fragment(layout) {
         setHasOptionsMenu(true)
         (activity as MainActivity).mAppDrawer.disableDrawer()
         hideKeyboard()
-
-
     }
 
     override fun onStop() {
         super.onStop()
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         (activity as MainActivity).menuInflater.inflate(R.menu.s_confirm_menu, menu)
     }
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.s_confirm_change -> change()
         }
         return true
-
     }
 
     open fun change() {

@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.apptest.R
 import com.example.apptest.ui.fragments.Settings
+import com.example.apptest.utilits.APP_ACTIVITY
 import com.example.apptest.utilits.USER
 import com.example.apptest.utilits.downloadAndSetImage
 import com.example.apptest.utilits.replaceFragment
@@ -29,7 +30,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
     private lateinit var mDrawer: Drawer
     private lateinit var mHeader: AccountHeader
     private lateinit var mDrawerLayout: DrawerLayout
-    private lateinit var mCurrentProfile: ProfileDrawerItem
+    private lateinit var mCurrentProfile:ProfileDrawerItem
 
     fun create() {
         initLoader()
@@ -38,25 +39,22 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
         mDrawerLayout = mDrawer.drawerLayout
     }
 
-
     fun disableDrawer() {
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = false
         mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val drawer = mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
         toolbar.setNavigationOnClickListener {
             mainActivity.supportFragmentManager.popBackStack()
         }
-
     }
 
     fun enableDrawer() {
         mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = true
-        val drawer = mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
         toolbar.setNavigationOnClickListener {
             mDrawer.openDrawer()
         }
-
     }
 
     private fun createDrawer() {
@@ -114,14 +112,13 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
     }
 
     private fun createHeader() {
-
         mCurrentProfile = ProfileDrawerItem()
             .withName(USER.fullname)
             .withEmail(USER.phone)
-            .withIcon(USER.photoUrl)
+            .withIcon(USER.photoURL)
             .withIdentifier(200)
         mHeader = AccountHeaderBuilder()
-            .withActivity(mainActivity)
+            .withActivity(APP_ACTIVITY)
             .withHeaderBackground(R.drawable.header)
             .addProfiles(
                 mCurrentProfile
@@ -132,12 +129,11 @@ class AppDrawer(val mainActivity: AppCompatActivity, val toolbar: Toolbar) {
         mCurrentProfile
             .withName(USER.fullname)
             .withEmail(USER.phone)
-            .withIcon(USER.photoUrl)
+            .withIcon(USER.photoURL)
         mHeader.updateProfile(mCurrentProfile)
     }
-
-    private fun initLoader() {
-        DrawerImageLoader.init(object : AbstractDrawerImageLoader() {
+    private fun initLoader(){
+        DrawerImageLoader.init(object :AbstractDrawerImageLoader(){
             override fun set(imageView: ImageView, uri: Uri, placeholder: Drawable) {
                 imageView.downloadAndSetImage(uri.toString())
             }

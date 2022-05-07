@@ -1,11 +1,11 @@
 package com.example.apptest.models
 
 data class User(
-    val id: String = "",
-    var phone: String = "",
-    var username: String = "",
-    var fullname: String = "",
-    var bio: String = "",
-    var status: String = "",
-    var photoUrl: String = "empty"
+    val id:String = "",
+    var username:String = "",
+    var bio:String = "",
+    var phone:String = "",
+    var fullname:String = "",
+    var state:String = "",
+    var photoURL:String = "empty"
 )
