@@ -2,6 +2,7 @@ package com.example.apptest.utilits
 
 import android.net.Uri
 import com.example.apptest.models.User
+import com.example.apptest.ui.objects.AppValueEventListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -51,4 +52,14 @@ inline fun putImageToStorage(uri: Uri, path: StorageReference,crossinline functi
     path.putFile(uri)
         .addOnSuccessListener { function() }
         .addOnFailureListener { showToast(it.message.toString()) }
+}
+inline fun initUser(crossinline function: () -> Unit) {
+    REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
+        .addListenerForSingleValueEvent(AppValueEventListener {
+            USER = it.getValue(User::class.java) ?: User()
+            if (USER.username.isEmpty()){
+                USER.username = CURRENT_UID
+            }
+            function()
+        })
 }

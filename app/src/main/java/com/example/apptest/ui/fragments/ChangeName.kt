@@ -9,10 +9,10 @@ class ChangeName : BaseChange(R.layout.fragment_change_name) {
 
     override fun onResume() {
         super.onResume()
-        initFillnameList()
+        initFullnameList()
     }
 
-    private fun initFillnameList() {
+    private fun initFullnameList() {
         val fullnameList = USER.fullname.split(" ")
         if (fullnameList.size > 1) {
             s_input_name.setText(fullnameList[0])
@@ -23,19 +23,19 @@ class ChangeName : BaseChange(R.layout.fragment_change_name) {
     override fun change() {
         val name = s_input_name.text.toString()
         val surname = s_input_surname.text.toString()
-        if (name.isEmpty()) {
-            showToast("Имя не может быть пустым!")
+        if (name.isEmpty()){
+            showToast("Имя не должно быть пустым")
         } else {
             val fullname = "$name $surname"
             REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_FULLNAME)
                 .setValue(fullname).addOnCompleteListener {
-                    if (it.isSuccessful) {
-                        showToast("Данные обновленны!")
+                    if (it.isSuccessful){
+                        showToast("Данные обновленны")
                         USER.fullname = fullname
+                        APP_ACTIVITY.mAppDrawer.updateHeader()
                         fragmentManager?.popBackStack()
                     }
                 }
-
         }
     }
 }

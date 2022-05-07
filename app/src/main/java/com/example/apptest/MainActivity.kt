@@ -27,8 +27,12 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
         APP_ACTIVITY = this
-        initFields()
-        initFunc()
+        initFirebase()
+        initUser{
+            initFields()
+            initFunc()
+        }
+
     }
 
     private fun initFunc() {
@@ -45,16 +49,10 @@ class MainActivity : AppCompatActivity() {
     private fun initFields() {
         mToolbar = mBinding.mToolBar
         mAppDrawer = AppDrawer(this, mToolbar)
-        initFirebase()
-        initUser()
+
     }
 
-    private fun initUser() {
-        REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
-            .addListenerForSingleValueEvent(AppValueEventListener {
-                USER = it.getValue(User::class.java) ?: User()
-            })
-    }
+
 
 
 

@@ -70,6 +70,7 @@ class Settings : Base(R.layout.fragment_settings) {
                         s_profile_image.downloadAndSetImage(it)
                         showToast("Данные обновленны")
                         USER.photoUrl = it
+                        APP_ACTIVITY.mAppDrawer.updateHeader()
                     }
                 }
             }
