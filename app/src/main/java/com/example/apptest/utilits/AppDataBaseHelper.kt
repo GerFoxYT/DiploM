@@ -1,6 +1,8 @@
 package com.example.apptest.utilits
 
 import android.net.Uri
+import android.provider.ContactsContract
+import com.example.apptest.models.CommonModel
 import com.example.apptest.models.User
 import com.example.apptest.ui.objects.AppValueEventListener
 import com.google.firebase.auth.FirebaseAuth
@@ -13,10 +15,11 @@ lateinit var AUTH: FirebaseAuth
 lateinit var CURRENT_UID: String
 lateinit var REF_DATABASE_ROOT: DatabaseReference
 lateinit var USER: User
-lateinit var REF_STORAGE_ROOT:StorageReference
+lateinit var REF_STORAGE_ROOT: StorageReference
 
 const val NODE_USERS = "users"
 const val NODE_USERNAMES = "usernames"
+const val NODE_PHONES = "phones"
 const val FOLDER_PROFILE_IMAGE = "profile_image"
 
 const val CHILD_ID = "id"
@@ -36,20 +39,20 @@ fun initFirebase() {
     REF_STORAGE_ROOT = FirebaseStorage.getInstance("gs://gerfox-message.appspot.com").reference
 }
 
-inline fun putUrlToDatabase(url: String, crossinline  function: () -> Unit) {
+inline fun putUrlToDatabase(url: String, crossinline function: () -> Unit) {
     REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
         .child(CHILD_PHOTO_URL).setValue(url)
         .addOnSuccessListener { function() }
         .addOnFailureListener { showToast(it.message.toString()) }
 }
 
-inline fun getUrlFromStorage(path: StorageReference,crossinline  function: (url: String) -> Unit) {
+inline fun getUrlFromStorage(path: StorageReference, crossinline function: (url: String) -> Unit) {
     path.downloadUrl
         .addOnSuccessListener { function(it.toString()) }
         .addOnFailureListener { showToast(it.message.toString()) }
 }
 
-inline fun putImageToStorage(uri: Uri, path: StorageReference,crossinline function: () -> Unit) {
+inline fun putImageToStorage(uri: Uri, path: StorageReference, crossinline function: () -> Unit) {
     path.putFile(uri)
         .addOnSuccessListener { function() }
         .addOnFailureListener { showToast(it.message.toString()) }
@@ -60,9 +63,34 @@ inline fun initUser(crossinline function: () -> Unit) {
     REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
         .addListenerForSingleValueEvent(AppValueEventListener {
             USER = it.getValue(User::class.java) ?: User()
-            if (USER.username.isEmpty()){
+            if (USER.username.isEmpty()) {
                 USER.username = CURRENT_UID
             }
             function()
         })
+}
+
+fun initContacts() {
+    if (checkPermission(READ_CONTACTS))
+        showToast("Чтение контактов")
+    val arrayContacts = arrayListOf<CommonModel>()
+    val cursor = APP_ACTIVITY.contentResolver.query(
+        ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+        null,
+        null,
+        null,
+        null
+    )
+    cursor?.let {
+        while (it.moveToNext()) {
+            val fullName = it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+            val phone =
+                it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+            val newModel = CommonModel()
+            newModel.fullname = fullName
+            newModel.phone = phone.replace(Regex("[\\s,-]"), "")
+            arrayContacts.add(newModel)
+        }
+    }
+    cursor?.close()
 }
