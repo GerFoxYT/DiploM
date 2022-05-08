@@ -13,6 +13,7 @@
         android:layout_height="130dp"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -156,16 +157,5 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/settings_change_photo"
-        android:layout_width="@dimen/settings_user_photo_width"
-        android:layout_height="@dimen/settings_user_photo_height"
-        android:src="@drawable/ic_camera"
-        android:layout_marginEnd="@dimen/h_margin"
-        app:civ_border_color="@color/black"
-        android:elevation="2dp"
-        app:civ_circle_background_color="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="@+id/settings_header_block"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settings_header_block" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,7 +29,7 @@ class Settings : Base(R.layout.fragment_settings) {
         s_input_username.text = USER.username
         s_btn_change_name.setOnClickListener { replaceFragment(ChangeUsername()) }
         s_bio.setOnClickListener { replaceFragment(ChangeBio()) }
-        settings_change_photo.setOnClickListener { changePhotoUser() }
+        s_profile_image.setOnClickListener { changePhotoUser() }
         s_profile_image.downloadAndSetImage(USER.photoURL)
     }
 
