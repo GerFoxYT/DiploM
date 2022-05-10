@@ -48,7 +48,7 @@ class ChangeUsername : BaseChange(R.layout.fragment_change_username) {
             .setValue(mNewUsername)
             .addOnCompleteListener {
                 if (it.isSuccessful){
-                    showToast("Данные UP")
+                    showToast(getString(R.string.app_data_update))
                     deleteOldUsername()
                 } else {
                     showToast(it.exception?.message.toString())
@@ -60,7 +60,7 @@ class ChangeUsername : BaseChange(R.layout.fragment_change_username) {
         REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
             .addOnCompleteListener {
                 if (it.isSuccessful){
-                    showToast("Данные UP")
+                    showToast(getString(R.string.app_data_update))
                     fragmentManager?.popBackStack()
                     USER.username = mNewUsername
                 } else {

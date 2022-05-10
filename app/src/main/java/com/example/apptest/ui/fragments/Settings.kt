@@ -1,6 +1,5 @@
 package com.example.apptest.ui.fragments
 
-import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.view.Menu
@@ -25,10 +24,10 @@ class Settings : Base(R.layout.fragment_settings) {
         s_bio.text = USER.bio
         s_full_name.text = USER.fullname
         s_phoneNum.text = USER.phone
-        s_status.text = USER.state
+        state.text = USER.state
         s_input_username.text = USER.username
         s_btn_change_name.setOnClickListener { replaceFragment(ChangeUsername()) }
-        s_bio.setOnClickListener { replaceFragment(ChangeBio()) }
+        s_btn_change_status.setOnClickListener { replaceFragment(ChangeBio()) }
         s_profile_image.setOnClickListener { changePhotoUser() }
         s_profile_image.downloadAndSetImage(USER.photoURL)
     }
@@ -49,6 +48,7 @@ class Settings : Base(R.layout.fragment_settings) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.s_btn_exit -> {
+                AppStates.updateState(AppStates.OFFLINE)
                 AUTH.signOut()
                 APP_ACTIVITY.replaceActivity(RegisterActivity())
             }
@@ -69,7 +69,7 @@ class Settings : Base(R.layout.fragment_settings) {
                 getUrlFromStorage(path){
                     putUrlToDatabase(it){
                         s_profile_image.downloadAndSetImage(it)
-                        showToast("Данные UP")
+                        showToast(getString(R.string.app_data_update))
                         USER.photoURL = it
                         APP_ACTIVITY.mAppDrawer.updateHeader()
                     }

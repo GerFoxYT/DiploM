@@ -23,9 +23,9 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        mToolbar = mBinding.registerToolBar
+        mToolbar = mBinding.registerToolbar
         setSupportActionBar(mToolbar)
-        title = getString(R.string.title_ur_phone)
+        title = "Ваш телефон"
 
         replaceFragment(EnterPhoneNum(), false)
 

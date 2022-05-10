@@ -18,7 +18,7 @@ class ChangeBio : BaseChange(R.layout.fragment_change_bio) {
         REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_BIO).setValue(newBio)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    showToast("Данные UP")
+                    showToast(getString(R.string.app_data_update))
                     USER.bio = newBio
                     fragmentManager?.popBackStack()
                 }

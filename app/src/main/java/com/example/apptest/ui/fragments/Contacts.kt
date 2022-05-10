@@ -7,11 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apptest.R
 import com.example.apptest.models.CommonModel
+import com.example.apptest.ui.fragments.single_chat.SingleChat
 import com.example.apptest.ui.objects.AppValueEventListener
 import com.example.apptest.utilits.*
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.contact_item.view.*
@@ -24,6 +24,10 @@ class Contacts : Base(R.layout.fragment_contacts) {
     private lateinit var mAdapter: FirebaseRecyclerAdapter<CommonModel, ContactHolder>
     private lateinit var mRefContacts: DatabaseReference
     private lateinit var mRefUsers: DatabaseReference
+    private lateinit var mRefUsersListener: AppValueEventListener
+    private var mapListener = hashMapOf<DatabaseReference, AppValueEventListener>()
+
+
     override fun onResume() {
         super.onResume()
         APP_ACTIVITY.title = "Контакты"
@@ -49,14 +53,19 @@ class Contacts : Base(R.layout.fragment_contacts) {
                 model: CommonModel
             ) {
                 mRefUsers = REF_DATABASE_ROOT.child(NODE_USERS).child(model.id)
-                mRefUsers.addValueEventListener(AppValueEventListener {
+
+                mRefUsersListener = AppValueEventListener {
                     val contact = it.getCommonModel()
-                    holder.name.text = contact.fullname
+                    if (contact.fullname.isEmpty()){
+                        holder.name.text = model.fullname
+                    } else holder.name.text = contact.fullname
                     holder.state.text = contact.state
                     holder.photo.downloadAndSetImage(contact.photoURL)
-                })
+                    holder.itemView.setOnClickListener { replaceFragment(SingleChat(model)) }
+                }
 
-
+                mRefUsers.addValueEventListener(mRefUsersListener)
+                mapListener[mRefUsers] = mRefUsersListener
             }
 
         }
@@ -72,6 +81,11 @@ class Contacts : Base(R.layout.fragment_contacts) {
 
     override fun onPause() {
         super.onPause()
-        mAdapter
+        mAdapter.stopListening()
+        println()
+        mapListener.forEach {
+            it.key.removeEventListener(it.value)
+        }
+        println()
     }
 }

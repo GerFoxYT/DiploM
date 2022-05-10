@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/toolbar_image_chats"
+        android:layout_width="@dimen/toolbar_image_W"
+        android:layout_height="@dimen/toolbar_image_H"
+        android:src="@drawable/profile"
+        app:civ_circle_background_color="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/contact_fullname_chats"
+        style="@style/s_normal_text"
+        android:layout_marginTop="@dimen/v_margin"
+        tools:text="Влад Дурак"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@+id/toolbar_image_chats"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/contact_state_chats"
+        style="@style/s_small_text"
+        android:textColor="@color/md_dark_primary_text"
+        tools:text="В сети"
+        app:layout_constraintStart_toEndOf="@id/toolbar_image_chats"
+        app:layout_constraintTop_toBottomOf="@id/contact_fullname_chats" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

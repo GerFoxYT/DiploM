@@ -46,7 +46,7 @@ class EnterPhoneNum : Fragment(R.layout.fragment_enter_phone_num) {
 
     private fun sendCode() {
         if (register_input_number.text.toString().isEmpty()) {
-            showToast(getString(R.string.register_toast_enter_phone))
+            showToast("Код не может быть пустым!")
 
         } else {
             authUser()

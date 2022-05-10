@@ -10,7 +10,7 @@
         android:id="@+id/register_input_number"
         style="@style/edit_reg_text"
         android:autofillHints=""
-        android:hint="Введите номер телефона"
+        android:hint="@string/hint_enter_phone_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
