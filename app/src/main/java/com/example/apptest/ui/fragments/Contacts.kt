@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.apptest.R
 import com.example.apptest.models.CommonModel
 import com.example.apptest.ui.fragments.single_chat.SingleChat
-import com.example.apptest.ui.objects.AppValueEventListener
+import com.example.apptest.utilits.AppValueEventListener
 import com.example.apptest.utilits.*
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions

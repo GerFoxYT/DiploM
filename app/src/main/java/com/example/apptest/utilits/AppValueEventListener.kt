@@ -1,4 +1,4 @@
-package com.example.apptest.ui.objects
+package com.example.apptest.utilits
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

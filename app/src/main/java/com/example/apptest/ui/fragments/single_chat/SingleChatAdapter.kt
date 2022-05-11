@@ -5,18 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apptest.R
 import com.example.apptest.models.CommonModel
 import com.example.apptest.utilits.CURRENT_UID
 import com.example.apptest.utilits.asTime
 import kotlinx.android.synthetic.main.messgae_item.view.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolder>() {
 
-    private var mListMessagesCache = emptyList<CommonModel>()
+    private var mListMessagesCache = mutableListOf<CommonModel>()
+    private lateinit var mDiffResult: DiffUtil.DiffResult
 
     class SingleChatHolder(view: View) : RecyclerView.ViewHolder(view) {
         val blockUserMessage: ConstraintLayout = view.block_user_message
@@ -33,25 +33,39 @@ class SingleChatAdapter : RecyclerView.Adapter<SingleChatAdapter.SingleChatHolde
         return SingleChatHolder(view)
     }
 
+    override fun getItemCount(): Int = mListMessagesCache.size
+
     override fun onBindViewHolder(holder: SingleChatHolder, position: Int) {
         if (mListMessagesCache[position].from == CURRENT_UID) {
             holder.blockUserMessage.visibility = View.VISIBLE
             holder.blockReceivedMessage.visibility = View.GONE
             holder.chatUserMessage.text = mListMessagesCache[position].text
-            holder.chatUserMessageTime.text = mListMessagesCache[position].timeStamp.toString().asTime()
+            holder.chatUserMessageTime.text =
+                mListMessagesCache[position].timeStamp.toString().asTime()
         } else {
             holder.blockUserMessage.visibility = View.GONE
             holder.blockReceivedMessage.visibility = View.VISIBLE
             holder.chatReceivedMessage.text = mListMessagesCache[position].text
-            holder.chatReceivedMessageTime.text = mListMessagesCache[position].timeStamp.toString().asTime()
+            holder.chatReceivedMessageTime.text =
+                mListMessagesCache[position].timeStamp.toString().asTime()
         }
     }
 
-    override fun getItemCount(): Int = mListMessagesCache.size
-
-    fun setList(list: List<CommonModel>) {
-        mListMessagesCache = list
-        notifyDataSetChanged()
+    fun addItemToBotton(item: CommonModel, onSuccess: () -> Unit) {
+        if (!mListMessagesCache.contains(item)) {
+            mListMessagesCache.add(item)
+            notifyItemInserted(mListMessagesCache.size)
+        }
+        onSuccess()
     }
 
-}
+        fun addItemToTop(item: CommonModel, onSuccess: () -> Unit) {
+            if (!mListMessagesCache.contains(item)) {
+                mListMessagesCache.add(item)
+                mListMessagesCache.sortBy { it.timeStamp.toString() }
+                notifyItemInserted(0)
+            }
+            onSuccess()
+        }
+    }
+

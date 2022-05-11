@@ -4,7 +4,6 @@ import android.net.Uri
 import com.example.apptest.R
 import com.example.apptest.models.CommonModel
 import com.example.apptest.models.UserModel
-import com.example.apptest.ui.objects.AppValueEventListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
@@ -121,6 +120,7 @@ fun sendMessage(message: String, receivingUserID: String, typeText: String, func
     mapMessage[CHILD_FROM] = CURRENT_UID
     mapMessage[CHILD_TYPE] = typeText
     mapMessage[CHILD_TEXT] = message
+    mapMessage[CHILD_ID] = messageKey.toString()
     mapMessage[CHILD_TIMESTAMP] = ServerValue.TIMESTAMP
 
     val mapDialogs = hashMapOf<String, Any>()
