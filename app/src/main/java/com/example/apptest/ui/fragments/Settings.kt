@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import com.example.apptest.R
-import com.example.apptest.activites.RegisterActivity
 import com.example.apptest.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
@@ -50,7 +49,7 @@ class Settings : Base(R.layout.fragment_settings) {
             R.id.s_btn_exit -> {
                 AppStates.updateState(AppStates.OFFLINE)
                 AUTH.signOut()
-                APP_ACTIVITY.replaceActivity(RegisterActivity())
+                restartActivity()
             }
             R.id.s_menu_change_name -> replaceFragment(ChangeName())
         }

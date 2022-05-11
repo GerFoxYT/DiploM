@@ -1,6 +1,7 @@
 package com.example.apptest.utilits
 
 import android.net.Uri
+import com.example.apptest.R
 import com.example.apptest.models.CommonModel
 import com.example.apptest.models.UserModel
 import com.example.apptest.ui.objects.AppValueEventListener
@@ -110,25 +111,62 @@ fun DataSnapshot.getCommonModel(): CommonModel =
 fun DataSnapshot.getUserModel(): UserModel =
     this.getValue(UserModel::class.java) ?: UserModel()
 
- fun sendMessage(message: String, receivingUserID: String, typeText: String, function: () -> Unit) {
+fun sendMessage(message: String, receivingUserID: String, typeText: String, function: () -> Unit) {
 
-     val refDialogUser = "$NODE_MESSAGES/$CURRENT_UID/$receivingUserID"
-     val refDialogReceivingUser = "$NODE_MESSAGES/$receivingUserID/$CURRENT_UID"
-     val messageKey = REF_DATABASE_ROOT.child(refDialogUser).push().key
+    val refDialogUser = "$NODE_MESSAGES/$CURRENT_UID/$receivingUserID"
+    val refDialogReceivingUser = "$NODE_MESSAGES/$receivingUserID/$CURRENT_UID"
+    val messageKey = REF_DATABASE_ROOT.child(refDialogUser).push().key
 
-     val mapMessage = hashMapOf<String, Any>()
-     mapMessage[CHILD_FROM] = CURRENT_UID
-     mapMessage[CHILD_TYPE] = typeText
-     mapMessage[CHILD_TEXT] = message
-     mapMessage[CHILD_TIMESTAMP] = ServerValue.TIMESTAMP
+    val mapMessage = hashMapOf<String, Any>()
+    mapMessage[CHILD_FROM] = CURRENT_UID
+    mapMessage[CHILD_TYPE] = typeText
+    mapMessage[CHILD_TEXT] = message
+    mapMessage[CHILD_TIMESTAMP] = ServerValue.TIMESTAMP
 
-     val mapDialogs = hashMapOf<String, Any>()
-     mapDialogs["$refDialogUser/$messageKey"] = mapMessage
-     mapDialogs["$refDialogReceivingUser/$messageKey"] = mapMessage
+    val mapDialogs = hashMapOf<String, Any>()
+    mapDialogs["$refDialogUser/$messageKey"] = mapMessage
+    mapDialogs["$refDialogReceivingUser/$messageKey"] = mapMessage
 
-     REF_DATABASE_ROOT
-         .updateChildren(mapDialogs)
-         .addOnSuccessListener { function() }
-         .addOnFailureListener { showToast(it.message.toString()) }
+    REF_DATABASE_ROOT
+        .updateChildren(mapDialogs)
+        .addOnSuccessListener { function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
 
+}
+
+fun updateCurrentUsername(newUserName: String) {
+    REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_USERNAME)
+        .setValue(newUserName)
+        .addOnSuccessListener {
+            showToast(APP_ACTIVITY.getString(R.string.app_data_update))
+            deleteOldUsername(newUserName)
+        }.addOnFailureListener { showToast(it.message.toString()) }
+}
+
+private fun deleteOldUsername(newUserName: String) {
+    REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
+        .addOnSuccessListener {
+            showToast(APP_ACTIVITY.getString(R.string.app_data_update))
+            APP_ACTIVITY.supportFragmentManager.popBackStack()
+            USER.username = newUserName
+        }.addOnFailureListener { showToast(it.message.toString()) }
+}
+
+fun setBioToDataBase(newBio: String) {
+    REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_BIO).setValue(newBio)
+        .addOnSuccessListener {
+            showToast(APP_ACTIVITY.getString(R.string.app_data_update))
+            USER.bio = newBio
+            APP_ACTIVITY.supportFragmentManager.popBackStack()
+        }.addOnFailureListener { showToast(it.message.toString()) }
+}
+
+fun setNameToDataBase(fullname: String) {
+    REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_FULLNAME)
+        .setValue(fullname).addOnSuccessListener {
+            showToast(APP_ACTIVITY.getString(R.string.app_data_update))
+            USER.fullname = fullname
+            APP_ACTIVITY.mAppDrawer.updateHeader()
+            APP_ACTIVITY.supportFragmentManager.popBackStack()
+        }.addOnFailureListener { showToast(it.message.toString()) }
 }

@@ -5,11 +5,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.example.apptest.activites.RegisterActivity
 import com.example.apptest.databinding.ActivityMainBinding
-import com.example.apptest.ui.fragments.Chats
+import com.example.apptest.ui.fragments.MainFragment
+import com.example.apptest.ui.fragments.register.EnterPhoneNum
 import com.example.apptest.ui.objects.AppDrawer
 import com.example.apptest.utilits.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         APP_ACTIVITY = this
         initFirebase()
         initUser{
+            CoroutineScope(Dispatchers.IO).launch {
+                initContacts()
+            }
             initContacts()
             initFields()
             initFunc()
@@ -34,12 +40,12 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun initFunc() {
+        setSupportActionBar(mToolbar)
         if (AUTH.currentUser != null) {
-            setSupportActionBar(mToolbar)
             mAppDrawer.create()
-            replaceFragment(Chats(), false)
+            replaceFragment(MainFragment(), false)
         } else {
-            replaceActivity(RegisterActivity())
+            replaceFragment(EnterPhoneNum(), false)
         }
     }
 

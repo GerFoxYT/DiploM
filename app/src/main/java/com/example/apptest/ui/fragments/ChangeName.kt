@@ -1,7 +1,9 @@
 package com.example.apptest.ui.fragments
 
 import com.example.apptest.R
-import com.example.apptest.utilits.*
+import com.example.apptest.utilits.USER
+import com.example.apptest.utilits.setNameToDataBase
+import com.example.apptest.utilits.showToast
 import kotlinx.android.synthetic.main.fragment_change_name.*
 
 class ChangeName : BaseChange(R.layout.fragment_change_name) {
@@ -23,19 +25,14 @@ class ChangeName : BaseChange(R.layout.fragment_change_name) {
     override fun change() {
         val name = s_input_name.text.toString()
         val surname = s_input_surname.text.toString()
-        if (name.isEmpty()){
+        if (name.isEmpty()) {
             showToast("Имя не может быть пустным")
         } else {
             val fullname = "$name $surname"
-            REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_FULLNAME)
-                .setValue(fullname).addOnCompleteListener {
-                    if (it.isSuccessful){
-                        showToast(getString(R.string.app_data_update))
-                        USER.fullname = fullname
-                        APP_ACTIVITY.mAppDrawer.updateHeader()
-                        fragmentManager?.popBackStack()
-                    }
-                }
+            setNameToDataBase(fullname)
+
         }
     }
+
+
 }
