@@ -24,6 +24,7 @@ const val NODE_USERS = "users"
 const val NODE_USERNAMES = "usernames"
 const val NODE_PHONES = "phones"
 const val FOLDER_PROFILE_IMAGE = "profile_image"
+const val FOLDER_MESSAGES_IMAGES = "message_image"
 const val NODE_PHONES_CONTACTS = "phones_contacts"
 const val NODE_MESSAGES = "messages"
 
@@ -33,7 +34,9 @@ const val CHILD_USERNAME = "username"
 const val CHILD_FULLNAME = "fullname"
 const val CHILD_BIO = "bio"
 const val CHILD_PHOTO_URL = "photoURL"
+const val CHILD_IMAGE_URL = "imageURL"
 const val CHILD_STATE = "state"
+
 
 const val CHILD_TEXT = "text"
 const val CHILD_TYPE = "type"
@@ -169,4 +172,25 @@ fun setNameToDataBase(fullname: String) {
             APP_ACTIVITY.mAppDrawer.updateHeader()
             APP_ACTIVITY.supportFragmentManager.popBackStack()
         }.addOnFailureListener { showToast(it.message.toString()) }
+}
+ fun sendMessageAsImage(receivingUserID: String, imageUrl: String, messageKey: String) {
+
+    val refDialogUser = "$NODE_MESSAGES/$CURRENT_UID/$receivingUserID"
+    val refDialogReceivingUser = "$NODE_MESSAGES/$receivingUserID/$CURRENT_UID"
+
+    val mapMessage = hashMapOf<String, Any>()
+    mapMessage[CHILD_FROM] = CURRENT_UID
+    mapMessage[CHILD_TYPE] = TYPE_MESSAGE_IMAGE
+    mapMessage[CHILD_ID] = messageKey
+    mapMessage[CHILD_TIMESTAMP] = ServerValue.TIMESTAMP
+     mapMessage[CHILD_IMAGE_URL] = imageUrl
+
+    val mapDialogs = hashMapOf<String, Any>()
+    mapDialogs["$refDialogUser/$messageKey"] = mapMessage
+    mapDialogs["$refDialogReceivingUser/$messageKey"] = mapMessage
+
+    REF_DATABASE_ROOT
+        .updateChildren(mapDialogs)
+        .addOnFailureListener { showToast(it.message.toString()) }
+
 }

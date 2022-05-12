@@ -45,6 +45,19 @@
         android:layout_width="50dp"
         android:layout_height="0dp"
         android:src="@drawable/otpravit"
+        android:visibility="gone"
+        android:padding="10dp"
+        android:layout_marginEnd="@dimen/v_margin"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chat_input_message"
+        android:contentDescription="" />
+    <ImageView
+        android:id="@+id/chat_btn_attach"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:src="@drawable/attach"
         android:padding="10dp"
         android:layout_marginEnd="@dimen/v_margin"
 
