@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ChangeBio">
+    tools:context=".ui.screens.ChangeBio">
 
     <EditText
         android:id="@+id/s_input_bio"

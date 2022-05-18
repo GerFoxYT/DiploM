@@ -1,6 +1,7 @@
-package com.example.apptest.ui.fragments
+package com.example.apptest.ui.screens
 
 import com.example.apptest.R
+import com.example.apptest.dataBase.*
 import com.example.apptest.utilits.AppValueEventListener
 import com.example.apptest.utilits.*
 import kotlinx.android.synthetic.main.fragment_settings.*

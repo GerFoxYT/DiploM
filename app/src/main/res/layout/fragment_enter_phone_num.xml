@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.apptest.ui.fragments.register.EnterPhoneNum">
+    tools:context="com.example.apptest.ui.screens.register.EnterPhoneNum">
 
     <EditText
         android:id="@+id/register_input_number"

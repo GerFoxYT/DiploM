@@ -1,4 +1,4 @@
-package com.example.apptest.ui.fragments
+package com.example.apptest.ui.screens
 
 import androidx.fragment.app.Fragment
 import com.example.apptest.utilits.APP_ACTIVITY

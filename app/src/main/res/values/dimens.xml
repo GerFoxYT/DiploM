@@ -33,7 +33,13 @@
 
     <dimen name="toolbar_image_W">45dp</dimen>
     <dimen name="toolbar_image_H">45dp</dimen>
+
     <dimen name="chat_image_w">180dp</dimen>
     <dimen name="chat_image_h">180dp</dimen>
+
+    <dimen name="chat_voice_w">180dp</dimen>
+    <dimen name="chat_voice_h">50dp</dimen>
+    <dimen name="icon_B_w">50dp</dimen>
+    <dimen name="icon_B_h">50dp</dimen>
 
 </resources>

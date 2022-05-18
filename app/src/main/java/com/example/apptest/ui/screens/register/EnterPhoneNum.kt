@@ -1,8 +1,8 @@
-package com.example.apptest.ui.fragments.register
+package com.example.apptest.ui.screens.register
 
 import androidx.fragment.app.Fragment
-import com.example.apptest.MainActivity
 import com.example.apptest.R
+import com.example.apptest.dataBase.AUTH
 import com.example.apptest.utilits.*
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential

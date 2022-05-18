@@ -5,9 +5,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import com.example.apptest.dataBase.AUTH
+import com.example.apptest.dataBase.initFirebase
+import com.example.apptest.dataBase.initUser
 import com.example.apptest.databinding.ActivityMainBinding
-import com.example.apptest.ui.fragments.MainFragment
-import com.example.apptest.ui.fragments.register.EnterPhoneNum
+import com.example.apptest.ui.screens.MainFragment
+import com.example.apptest.ui.screens.register.EnterPhoneNum
 import com.example.apptest.ui.objects.AppDrawer
 import com.example.apptest.utilits.*
 import kotlinx.coroutines.CoroutineScope

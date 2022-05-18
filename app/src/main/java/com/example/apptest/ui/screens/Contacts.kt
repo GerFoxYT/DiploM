@@ -1,4 +1,4 @@
-package com.example.apptest.ui.fragments
+package com.example.apptest.ui.screens
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.apptest.R
+import com.example.apptest.dataBase.*
 import com.example.apptest.models.CommonModel
-import com.example.apptest.ui.fragments.single_chat.SingleChat
+import com.example.apptest.ui.screens.single_chat.SingleChat
 import com.example.apptest.utilits.AppValueEventListener
 import com.example.apptest.utilits.*
 import com.firebase.ui.database.FirebaseRecyclerAdapter

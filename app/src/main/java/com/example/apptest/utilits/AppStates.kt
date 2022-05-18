@@ -1,5 +1,7 @@
 package com.example.apptest.utilits
 
+import com.example.apptest.dataBase.*
+
 enum class AppStates(val state:String) {
     ONLINE("В сети"),
     OFFLINE("Не в сети"),

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.fragments.single_chat.SingleChat">
+    tools:context=".ui.screens.single_chat.SingleChat">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/chat_swipe_refresh"
@@ -54,10 +54,22 @@
         app:layout_constraintTop_toTopOf="@+id/chat_input_message"
         android:contentDescription="" />
     <ImageView
-        android:id="@+id/chat_btn_attach"
+    android:id="@+id/chat_btn_attach"
+    android:layout_width="50dp"
+    android:layout_height="0dp"
+    android:src="@drawable/attach"
+    android:padding="10dp"
+    android:layout_marginEnd="@dimen/v_margin"
+
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/chat_btn_voice"
+    app:layout_constraintTop_toTopOf="@+id/chat_input_message"
+    android:contentDescription="" />
+    <ImageView
+        android:id="@+id/chat_btn_voice"
         android:layout_width="50dp"
         android:layout_height="0dp"
-        android:src="@drawable/attach"
+        android:src="@drawable/voice"
         android:padding="10dp"
         android:layout_marginEnd="@dimen/v_margin"
 
