@@ -1,13 +1,12 @@
-package com.example.apptest.ui.fragments
+package com.example.apptest.ui.screens
 
-import android.app.Activity
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import com.example.apptest.R
-import com.example.apptest.activites.RegisterActivity
+import com.example.apptest.dataBase.*
 import com.example.apptest.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
@@ -25,18 +24,18 @@ class Settings : Base(R.layout.fragment_settings) {
         s_bio.text = USER.bio
         s_full_name.text = USER.fullname
         s_phoneNum.text = USER.phone
-        s_status.text = USER.state
+        state.text = USER.state
         s_input_username.text = USER.username
         s_btn_change_name.setOnClickListener { replaceFragment(ChangeUsername()) }
-        s_bio.setOnClickListener { replaceFragment(ChangeBio()) }
-        settings_change_photo.setOnClickListener { changePhotoUser() }
+        s_btn_change_status.setOnClickListener { replaceFragment(ChangeBio()) }
+        s_profile_image.setOnClickListener { changePhotoUser() }
         s_profile_image.downloadAndSetImage(USER.photoURL)
     }
 
     private fun changePhotoUser() {
         CropImage.activity()
             .setAspectRatio(1, 1)
-            .setRequestedSize(600, 600)
+            .setRequestedSize(250, 250)
             .setCropShape(CropImageView.CropShape.OVAL)
             .start(APP_ACTIVITY,this)
     }
@@ -49,8 +48,9 @@ class Settings : Base(R.layout.fragment_settings) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.s_btn_exit -> {
+                AppStates.updateState(AppStates.OFFLINE)
                 AUTH.signOut()
-                APP_ACTIVITY.replaceActivity(RegisterActivity())
+                restartActivity()
             }
             R.id.s_menu_change_name -> replaceFragment(ChangeName())
         }
@@ -65,11 +65,11 @@ class Settings : Base(R.layout.fragment_settings) {
             val uri = CropImage.getActivityResult(data).uri
             val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE)
                 .child(CURRENT_UID)
-            putImageToStorage(uri,path){
+            putFileToStorage(uri,path){
                 getUrlFromStorage(path){
                     putUrlToDatabase(it){
                         s_profile_image.downloadAndSetImage(it)
-                        showToast("Данные UP")
+                        showToast(getString(R.string.app_data_update))
                         USER.photoURL = it
                         APP_ACTIVITY.mAppDrawer.updateHeader()
                     }

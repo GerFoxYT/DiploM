@@ -1,4 +1,4 @@
-package com.example.apptest.ui.fragments
+package com.example.apptest.ui.screens
 
 import android.view.Menu
 import android.view.MenuInflater
@@ -6,7 +6,6 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.example.apptest.MainActivity
 import com.example.apptest.R
-import com.example.apptest.utilits.APP_ACTIVITY
 import com.example.apptest.utilits.hideKeyboard
 
 open class BaseChange(layout: Int) : Fragment(layout) {

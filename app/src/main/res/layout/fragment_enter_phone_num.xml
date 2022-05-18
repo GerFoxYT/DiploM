@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.apptest.ui.fragments.EnterPhoneNum">
+    tools:context="com.example.apptest.ui.screens.register.EnterPhoneNum">
 
     <EditText
         android:id="@+id/register_input_number"
         style="@style/edit_reg_text"
         android:autofillHints=""
-        android:hint="Введите номер телефона"
+        android:hint="@string/hint_enter_phone_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

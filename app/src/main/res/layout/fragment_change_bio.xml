@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ChangeBio">
+    tools:context=".ui.screens.ChangeBio">
 
     <EditText
         android:id="@+id/s_input_bio"
         style="@style/edit_reg_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="О себе"
+        android:hint="@string/hint_change_bio"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

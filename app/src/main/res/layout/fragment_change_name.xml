@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ChangeName">
+    tools:context=".ui.screens.ChangeName">
 
     <EditText
         android:id="@+id/s_input_name"
         style="@style/edit_reg_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Имя"
+        android:hint="@string/hint_change_name"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         style="@style/edit_reg_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Фамилия"
+        android:hint="@string/hint_change_surname"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

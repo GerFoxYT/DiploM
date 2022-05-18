@@ -1,13 +1,9 @@
-package com.example.apptest.ui.fragments
+package com.example.apptest.ui.screens.register
 
 import androidx.fragment.app.Fragment
-import com.example.apptest.MainActivity
 import com.example.apptest.R
-import com.example.apptest.activites.RegisterActivity
-import com.example.apptest.utilits.AUTH
-import com.example.apptest.utilits.replaceActivity
-import com.example.apptest.utilits.replaceFragment
-import com.example.apptest.utilits.showToast
+import com.example.apptest.dataBase.AUTH
+import com.example.apptest.utilits.*
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
@@ -28,7 +24,7 @@ class EnterPhoneNum : Fragment(R.layout.fragment_enter_phone_num) {
                 AUTH.signInWithCredential(credential).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         showToast("Вход успшено выполнен")
-                        (activity as RegisterActivity).replaceActivity(MainActivity())
+                        restartActivity()
                     } else showToast(task.exception?.message.toString())
                 }
             }
@@ -46,7 +42,7 @@ class EnterPhoneNum : Fragment(R.layout.fragment_enter_phone_num) {
 
     private fun sendCode() {
         if (register_input_number.text.toString().isEmpty()) {
-            showToast(getString(R.string.register_toast_enter_phone))
+            showToast("Код не может быть пустым!")
 
         } else {
             authUser()
@@ -57,7 +53,7 @@ class EnterPhoneNum : Fragment(R.layout.fragment_enter_phone_num) {
     private fun authUser() {
         mPhoneNumber = register_input_number.text.toString()
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-            mPhoneNumber, 60, TimeUnit.SECONDS, activity as RegisterActivity, mCallBack
+            mPhoneNumber, 60, TimeUnit.SECONDS, APP_ACTIVITY, mCallBack
         )
     }
 

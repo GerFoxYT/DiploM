@@ -1,7 +1,8 @@
-package com.example.apptest.ui.fragments
+package com.example.apptest.ui.screens
 
 import com.example.apptest.R
-import com.example.apptest.ui.objects.AppValueEventListener
+import com.example.apptest.dataBase.*
+import com.example.apptest.utilits.AppValueEventListener
 import com.example.apptest.utilits.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 import java.util.*
@@ -38,35 +39,13 @@ class ChangeUsername : BaseChange(R.layout.fragment_change_username) {
         REF_DATABASE_ROOT.child(NODE_USERNAMES).child(mNewUsername).setValue(CURRENT_UID)
             .addOnCompleteListener {
                 if (it.isSuccessful){
-                    updateCurrentUsername()
+                    updateCurrentUsername(mNewUsername)
                 }
             }
     }
 
-    private fun updateCurrentUsername() {
-        REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_USERNAME)
-            .setValue(mNewUsername)
-            .addOnCompleteListener {
-                if (it.isSuccessful){
-                    showToast("Данные UP")
-                    deleteOldUsername()
-                } else {
-                    showToast(it.exception?.message.toString())
-                }
-            }
-    }
 
-    private fun deleteOldUsername() {
-        REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
-            .addOnCompleteListener {
-                if (it.isSuccessful){
-                    showToast("Данные UP")
-                    fragmentManager?.popBackStack()
-                    USER.username = mNewUsername
-                } else {
-                    showToast(it.exception?.message.toString())
-                }
-            }
-    }
+
+
     }
 
