@@ -1,4 +1,4 @@
-package com.example.apptest.ui.screens
+package com.example.apptest.ui.screens.base
 
 import android.view.Menu
 import android.view.MenuInflater

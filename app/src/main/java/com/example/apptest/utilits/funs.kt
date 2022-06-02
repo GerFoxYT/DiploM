@@ -2,12 +2,16 @@ package com.example.apptest.utilits
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.provider.ContactsContract
+import android.provider.OpenableColumns
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.apptest.MainActivity
 import com.example.apptest.R
 import com.example.apptest.dataBase.updatePhonesToDatabase
@@ -94,3 +98,22 @@ fun String.asTime(): String {
     val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
     return timeFormat.format(time)
 }
+
+fun getFileNameFromUri(uri: Uri): String {
+var result = ""
+    val cursor = APP_ACTIVITY.contentResolver.query(uri, null, null, null, null)
+    try {
+        if (cursor!=null && cursor.moveToFirst()){
+            result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+        }
+    } catch (e:Exception){
+        showToast(e.message.toString())
+    } finally {
+        cursor?.close()
+        return result
+    }
+}
+
+fun getPlurals(count: Int) = APP_ACTIVITY.resources.getQuantityString(
+    R.plurals.count_members, count, count
+)

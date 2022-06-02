@@ -1,4 +1,4 @@
-package com.example.apptest.ui.screens
+package com.example.apptest.settings
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -7,6 +7,10 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import com.example.apptest.R
 import com.example.apptest.dataBase.*
+import com.example.apptest.ui.screens.base.Base
+import com.example.apptest.ui.screens.register.ChangeBio
+import com.example.apptest.ui.screens.register.ChangeName
+import com.example.apptest.ui.screens.register.ChangeUsername
 import com.example.apptest.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView

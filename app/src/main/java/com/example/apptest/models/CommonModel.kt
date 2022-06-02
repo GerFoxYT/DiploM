@@ -8,14 +8,13 @@ data class CommonModel(
     var fullname: String = "",
     var state: String = "",
     var photoURL: String = "empty",
-
-    var text:String = "",
-    var type:String = "",
-    var from:String = "",
-    var timeStamp:Any = "",
-var FileURL:String = "empty"
-
-
+    var text: String = "",
+    var type: String = "",
+    var from: String = "",
+    var timeStamp: Any = "",
+    var FileURL: String = "empty",
+    var lastMessage: String = "",
+    var choice: Boolean = false
 
 
 ) {

@@ -1,4 +1,4 @@
-package com.example.apptest.ui.screens
+package com.example.apptest.ui.screens.contacts
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.apptest.R
 import com.example.apptest.dataBase.*
 import com.example.apptest.models.CommonModel
+import com.example.apptest.ui.screens.base.Base
 import com.example.apptest.ui.screens.single_chat.SingleChat
 import com.example.apptest.utilits.AppValueEventListener
 import com.example.apptest.utilits.*

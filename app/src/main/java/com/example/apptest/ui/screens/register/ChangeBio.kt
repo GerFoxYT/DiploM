@@ -1,8 +1,9 @@
-package com.example.apptest.ui.screens
+package com.example.apptest.ui.screens.register
 
 import com.example.apptest.R
 import com.example.apptest.dataBase.USER
 import com.example.apptest.dataBase.setBioToDataBase
+import com.example.apptest.ui.screens.base.BaseChange
 import kotlinx.android.synthetic.main.fragment_change_bio.*
 
 

@@ -9,7 +9,7 @@ import com.example.apptest.dataBase.AUTH
 import com.example.apptest.dataBase.initFirebase
 import com.example.apptest.dataBase.initUser
 import com.example.apptest.databinding.ActivityMainBinding
-import com.example.apptest.ui.screens.MainFragment
+import com.example.apptest.ui.screens.main_list.MainList
 import com.example.apptest.ui.screens.register.EnterPhoneNum
 import com.example.apptest.ui.objects.AppDrawer
 import com.example.apptest.utilits.*
@@ -21,15 +21,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
     lateinit var mAppDrawer: AppDrawer
-     lateinit var mToolbar: Toolbar
+    lateinit var mToolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
         APP_ACTIVITY = this
         initFirebase()
-        initUser{
+        initUser {
             CoroutineScope(Dispatchers.IO).launch {
                 initContacts()
             }
@@ -37,16 +38,14 @@ class MainActivity : AppCompatActivity() {
             initFields()
             initFunc()
         }
-
     }
-
 
 
     private fun initFunc() {
         setSupportActionBar(mToolbar)
         if (AUTH.currentUser != null) {
             mAppDrawer.create()
-            replaceFragment(MainFragment(), false)
+            replaceFragment(MainList(), false)
         } else {
             replaceFragment(EnterPhoneNum(), false)
         }
@@ -75,7 +74,11 @@ class MainActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (ContextCompat.checkSelfPermission(APP_ACTIVITY, READ_CONTACTS)==PackageManager.PERMISSION_GRANTED){
+        if (ContextCompat.checkSelfPermission(
+                APP_ACTIVITY,
+                READ_CONTACTS
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
             initContacts()
         }
     }

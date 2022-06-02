@@ -1,11 +1,9 @@
 package com.example.apptest.ui.screens.single_chat
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.view.MotionEvent
-import android.view.View
+import android.view.*
 import android.widget.AbsListView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,12 +13,16 @@ import com.example.apptest.R
 import com.example.apptest.dataBase.*
 import com.example.apptest.models.CommonModel
 import com.example.apptest.models.UserModel
-import com.example.apptest.ui.screens.Base
+import com.example.apptest.ui.screens.base.Base
 import com.example.apptest.ui.message_recycleView.views.AppViewFactory
+import com.example.apptest.ui.screens.main_list.MainList
 import com.example.apptest.utilits.*
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.firebase.database.DatabaseReference
 import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.choice_upload.*
 import kotlinx.android.synthetic.main.fragment_single_chat.*
 import kotlinx.android.synthetic.main.toolbar_info.view.*
 import kotlinx.coroutines.CoroutineScope
@@ -43,6 +45,7 @@ class SingleChat(private val contact: CommonModel) : Base(R.layout.fragment_sing
     private lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
     private lateinit var mLayoutManager: LinearLayoutManager
     private lateinit var mAppVoiceRec: appVoiceRec
+    private lateinit var mBottomSheetBehavior: BottomSheetBehavior<*>
 
     override fun onResume() {
         super.onResume()
@@ -53,6 +56,9 @@ class SingleChat(private val contact: CommonModel) : Base(R.layout.fragment_sing
 
     @SuppressLint("ClickableViewAccessibility")
     private fun initFields() {
+        setHasOptionsMenu(true)
+        mBottomSheetBehavior = BottomSheetBehavior.from(bottom_sheet_choice)
+        mBottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
         mAppVoiceRec = appVoiceRec()
         mSwipeRefreshLayout = chat_swipe_refresh
         mLayoutManager = LinearLayoutManager(this.context)
@@ -69,7 +75,7 @@ class SingleChat(private val contact: CommonModel) : Base(R.layout.fragment_sing
             }
         })
 
-        chat_btn_attach.setOnClickListener { attachFile() }
+        chat_btn_attach.setOnClickListener { attach() }
 
         CoroutineScope(Dispatchers.IO).launch {
             chat_btn_voice.setOnTouchListener { v, event ->
@@ -106,8 +112,19 @@ class SingleChat(private val contact: CommonModel) : Base(R.layout.fragment_sing
 
     }
 
+    private fun attach() {
+        mBottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        btn_file_attach.setOnClickListener { attachFile() }
+        btn_image_attach.setOnClickListener { attachImage() }
+    }
 
     private fun attachFile() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "*/*"
+        startActivityForResult(intent, PICK_FILE_REQUEST_CODE)
+    }
+
+    private fun attachImage() {
         CropImage.activity()
             .setAspectRatio(1, 1)
             .setRequestedSize(350, 350)
@@ -179,13 +196,13 @@ class SingleChat(private val contact: CommonModel) : Base(R.layout.fragment_sing
             mSmoothScrollToPosition = true
             val message = chat_input_message.text.toString()
             if (message.isEmpty()) {
-            }
-            else sendMessage(message, contact.id, TYPE_TEXT) {
-
+            } else sendMessage(message, contact.id, TYPE_TEXT) {
+                saveToMainList(contact.id, TYPE_CHAT)
                 chat_input_message.setText("")
             }
         }
     }
+
 
     private fun initInfoToolbar() {
         if (mReceivingUser.fullname.isEmpty()) {
@@ -198,14 +215,24 @@ class SingleChat(private val contact: CommonModel) : Base(R.layout.fragment_sing
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
-            && resultCode == Activity.RESULT_OK && data != null
-        ) {
-            val uri = CropImage.getActivityResult(data).uri
-            val messageKey = getMessageKey(contact.id)
-            uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_IMAGE)
-            mSmoothScrollToPosition = true
 
+        if (data != null) {
+
+            when (requestCode) {
+                CROP_IMAGE_ACTIVITY_REQUEST_CODE -> {
+                    val uri = CropImage.getActivityResult(data).uri
+                    val messageKey = getMessageKey(contact.id)
+                    uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_IMAGE)
+                    mSmoothScrollToPosition = true
+                }
+                PICK_FILE_REQUEST_CODE -> {
+                    val uri = data.data
+                    val messageKey = getMessageKey(contact.id)
+                    val filename = getFileNameFromUri(uri!!)
+                    uploadFileToStorage(uri, messageKey, contact.id, TYPE_MESSAGE_FILE, filename)
+                    mSmoothScrollToPosition = true
+                }
+            }
         }
     }
 
@@ -221,5 +248,23 @@ class SingleChat(private val contact: CommonModel) : Base(R.layout.fragment_sing
         super.onDestroy()
         mAppVoiceRec.releaseRec()
         mAdapter.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        activity?.menuInflater?.inflate(R.menu.single_chat_action_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_delete -> clearChat(contact.id) {
+                showToast("Чат удалён")
+                replaceFragment(MainList())
+            }
+            R.id.menu_hide -> hideChat(contact.id) {
+                showToast("Чат скрыт")
+                replaceFragment(MainList())
+            }
+        }
+        return true
     }
 }

@@ -1,7 +1,8 @@
-package com.example.apptest.ui.screens
+package com.example.apptest.ui.screens.register
 
 import com.example.apptest.R
 import com.example.apptest.dataBase.*
+import com.example.apptest.ui.screens.base.BaseChange
 import com.example.apptest.utilits.AppValueEventListener
 import com.example.apptest.utilits.*
 import kotlinx.android.synthetic.main.fragment_settings.*

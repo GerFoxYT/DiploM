@@ -6,10 +6,12 @@ import android.view.View
 import android.widget.ImageView
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.apptest.R
-import com.example.apptest.ui.screens.Contacts
-import com.example.apptest.ui.screens.Settings
+import com.example.apptest.ui.screens.contacts.Contacts
+import com.example.apptest.settings.Settings
 import com.example.apptest.utilits.APP_ACTIVITY
 import com.example.apptest.dataBase.USER
+import com.example.apptest.ui.screens.Info
+import com.example.apptest.ui.screens.groups.AddContactsMain
 import com.example.apptest.utilits.downloadAndSetImage
 import com.example.apptest.utilits.replaceFragment
 import com.mikepenz.materialdrawer.AccountHeader
@@ -66,7 +68,7 @@ class AppDrawer {
             .addDrawerItems(
                 PrimaryDrawerItem().withIdentifier(100)
                     .withIconTintingEnabled(true)
-                    .withName("Создать группу[В разработке]")
+                    .withName("Создать группу")
                     .withSelectable(false)
                     .withIcon(R.drawable.add_user),
                 PrimaryDrawerItem().withIdentifier(101)
@@ -92,7 +94,7 @@ class AppDrawer {
                 DividerDrawerItem(),
                 PrimaryDrawerItem().withIdentifier(105)
                     .withIconTintingEnabled(true)
-                    .withName("Информация[В разработке]")
+                    .withName("Информация")
                     .withSelectable(false)
                     .withIcon(R.drawable.info),
             ).withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
@@ -110,8 +112,10 @@ class AppDrawer {
 
     private fun clickToItem(position: Int) {
         when (position) {
+            1 -> replaceFragment(AddContactsMain())
             5 -> replaceFragment(Settings())
             2 -> replaceFragment(Contacts())
+            7 -> replaceFragment(Info())
         }
     }
 
@@ -140,6 +144,7 @@ class AppDrawer {
 
     private fun initLoader() {
         DrawerImageLoader.init(object : AbstractDrawerImageLoader() {
+            @Deprecated("")
             override fun set(imageView: ImageView, uri: Uri, placeholder: Drawable) {
                 imageView.downloadAndSetImage(uri.toString())
             }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/create_group_image"
+        android:layout_width="@dimen/s_profile_image_width"
+        android:layout_height="@dimen/s_profile_image_height"
+        android:layout_margin="@dimen/h_margin"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/create_group_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/v_margin"
+        android:focusableInTouchMode="true"
+        android:hint="Введите название группы"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@id/create_group_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/create_group_image"
+        app:layout_constraintTop_toTopOf="@id/create_group_image" />
+
+    <TextView
+        android:id="@+id/create_group_counts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/v_margin"
+        android:text="@string/s_text_acc"
+        android:textColor="@color/colorSecondary"
+        android:textSize="@dimen/norm_size"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/create_group_image"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/create_group_btn_comp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/h_margin"
+        android:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/check"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/create_group_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:listitem="@layout/main_list_item"
+        app:layout_constraintTop_toBottomOf="@id/create_group_counts"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
