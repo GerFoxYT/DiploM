@@ -27,8 +27,7 @@
                 android:id="@+id/chat_recycle_view"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layoutAnimation="@anim/alpha_in"
-                android:background="@color/light_gray"/>
+                android:background="@color/nedowhite"/>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 

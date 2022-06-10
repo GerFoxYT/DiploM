@@ -31,8 +31,9 @@
     <string name="hide_chat">Скрыть чат</string>
     <string name="delete_chat">Удалить чат</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- fragment_info -->
     <string name="email">Если найдете баги/недочеты Предложите идеи - пишите на эл.почту gerfox@bk.ru</string>
     <string name="dev_alone"><![CDATA[Данное приложение <GerFox Message> находится в разработке. Так как им занимается один человек.]]></string>
     <string name="info">Информация</string>
+    <string name="info_group">Инфо</string>
 </resources>

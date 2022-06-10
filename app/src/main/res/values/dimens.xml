@@ -25,20 +25,24 @@
     <dimen name="large_size">18sp</dimen>
     <!--Эффект клика-->
     <dimen name="s_ripply_effect_radius">5dp</dimen>
-
+    <!--Падинг-->
     <dimen name="Padding">10dp</dimen>
     <dimen name="Padding_otprv">15dp</dimen>
-
+    <!--Маржин для текста-->
     <dimen name="text_margin">16dp</dimen>
-
+    <!--Размеры фото в тоолбаре-->
     <dimen name="toolbar_image_W">45dp</dimen>
     <dimen name="toolbar_image_H">45dp</dimen>
-
+    <!--Размер холдера отправляемой картинки-->
     <dimen name="chat_image_w">180dp</dimen>
     <dimen name="chat_image_h">180dp</dimen>
-
+    <!--Размер холдера голос. сообщений-->
     <dimen name="chat_voice_w">180dp</dimen>
     <dimen name="chat_voice_h">50dp</dimen>
+    <!--Размер холдера файл. сообщений-->
+    <dimen name="chat_file_w">180dp</dimen>
+    <dimen name="chat_file_h">50dp</dimen>
+    <!--Размер кнопки иконки-->
     <dimen name="icon_B_w">50dp</dimen>
     <dimen name="icon_B_h">50dp</dimen>
 

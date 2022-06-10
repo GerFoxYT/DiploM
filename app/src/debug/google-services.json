@@ -8,49 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:276090029741:android:3afc1e97437b38105d6824",
+        "mobilesdk_app_id": "1:276090029741:android:1b5cafadf43d85825d6824",
         "android_client_info": {
-          "package_name": "com.example.apptest"
+          "package_name": "com.example.gerfoxmessages"
         }
       },
       "oauth_client": [
         {
-          "client_id": "276090029741-bpukidicb3dgjivi41401jc13rjv5tv1.apps.googleusercontent.com",
+          "client_id": "276090029741-v8s5lbc05gkcbj229mho0f8cbv5lv3ub.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.apptest",
+            "package_name": "com.example.gerfoxmessages",
             "certificate_hash": "6cc5f00438af29a985bfb8c515375bfa13149971"
           }
         },
-        {
-          "client_id": "276090029741-ccmnaap51pha37fagoc9afl3bdmfidum.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCuZN6TpltzVoVhL_rST0JczFX1g2PL8CU"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "276090029741-ccmnaap51pha37fagoc9afl3bdmfidum.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:276090029741:android:53da6601b1f767045d6824",
-        "android_client_info": {
-          "package_name": "com.example.gerfoxmessage"
-        }
-      },
-      "oauth_client": [
         {
           "client_id": "276090029741-ccmnaap51pha37fagoc9afl3bdmfidum.apps.googleusercontent.com",
           "client_type": 3
