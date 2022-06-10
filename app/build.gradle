@@ -69,4 +69,6 @@ dependencies {
 
     // Круглые аватарки - CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+
 }

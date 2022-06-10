@@ -70,10 +70,10 @@ class HolderFileMessage(view: View) : RecyclerView.ViewHolder(view), MessageHold
             view.text
         )
         try {
-            if (checkPermission(WRITE_FILES)) {
+            if (checkPermission(WRITE_FILES)){
                 file.createNewFile()
-                getFileFromStorage(file, view.fileURL) {
-                    if (view.from == CURRENT_UID) {
+                getFileFromStorage(file,view.fileURL){
+                    if (view.from == CURRENT_UID){
                         chatUserBtnDwn.visibility = View.VISIBLE
                         chatUserProgressBar.visibility = View.INVISIBLE
                     } else {
